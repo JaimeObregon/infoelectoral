@@ -34,7 +34,7 @@ A fecha de creación de este proyecto (julio de 2020), [la fuente oficial](https
 
 La descarga inicial manual de todos los ficheros es tediosa porque se hace preciso cumplimentar iterativamente los desplegables `Elección` (proceso electoral) y `Fecha` (convocatoria) así como descargar y descomprimir uno a uno sucesivamente cada uno de los 161 ficheros históricos existentes ahora mismo.
 
-Para evitarte este tedioso trabajo manual, este repositorio reúne ya **una copia descargada y descomprimida de todos estos ficheros oficiales**. No obstante, y por si por razones de auditoría u otros motivos desearas descargar los datos de la fuente original, he compilado la relación de recursos descargables en los siguientes ficheros:
+Para evitarte este tedioso trabajo manual, este repositorio reúne ya **una copia descargada y descomprimida de todos estos ficheros oficiales**. No obstante, y si por razones de auditoría u otros motivos deseares descargar los datos de la fuente original, he compilado la relación de recursos descargables en los siguientes ficheros:
 
 - [`congreso.txt`](/assets/congreso.txt)
 - [`senado.txt`](/assets/senado.txt)
@@ -47,13 +47,11 @@ Así, por ejemplo puedes valerte de `wget -i municipales.txt` para descargar tod
 
 ## ¿Qué posprocesado se ha hecho aquí de los datos oficiales?
 
-En [el directorio `/files`](/files) de este repositorio se ha posprocesado cada fichero `.zip` descargado de la fuente oficial. Este posprocesado no altera ni desnaturaliza los datos:
+En [el directorio `/files`](/files) de este repositorio he posprocesado cada fichero `.zip` descargado de la fuente oficial. Este posprocesado no altera ni desnaturaliza los datos:
 
-1. Cada fichero se ha descomprimido, preservando su nombre de fichero, en el subdirectorio correspondiente al tipo de proceso electoral al que pertenece.
-  Por ejemplo, `04199105_TOTA.zip` se ha descomprimido en `municipales/04199105_TOTA`.
+1. Cada fichero se ha descomprimido, preservando su nombre de fichero, en el subdirectorio correspondiente al tipo de proceso electoral al que pertenece. Por ejemplo, `04199105_TOTA.zip` se ha descomprimido en `municipales/04199105_TOTA`.
 
-2. Los ficheros `FICHEROS.DOC` y `FICHEROS.rtf` que el Ministerio incluye en cada uno de los ficheros `.zip` han sido eliminados de cada subdirectorio descomprimido tras comprobar que son exactamente los mismos ficheros en todos y cada uno de los ficheros `.zip`.
-  Como además `FICHEROS.DOC` y `FICHEROS.rtf` son exactamente el mismo documento en dos formatos diferentes, he eliminado el segundo y dejado una única copia del primero que puede encontrarse en [`/files`](/files).
+2. Los ficheros `FICHEROS.DOC` y `FICHEROS.rtf` que el Ministerio incluye en cada uno de los ficheros `.zip` han sido eliminados de cada subdirectorio descomprimido tras comprobar que son exactamente los mismos ficheros en todos y cada uno de los ficheros `.zip`. Como además `FICHEROS.DOC` y `FICHEROS.rtf` son exactamente el mismo documento en dos formatos diferentes, he eliminado el segundo y dejado una única copia del primero que puede encontrarse en [`/files`](/files).
 
 # Agradecimientos
 
@@ -74,7 +72,7 @@ A la fecha de desarrollo de este proyecto estos son los términos legales para l
 
 # Licencia de este repositorio
 
-<strong>El *copyright* de este proyecto pertenece a Jaime Gómez-Obregón</strong>, quien lo distribuye como software libre bajo los términos de la licencia GNU Affero General Public License versión 3 y posteriores.
+<strong>El *copyright* de este proyecto pertenece a Jaime Gómez-Obregón</strong>, quien lo distribuye como software libre y de código abierto bajo los términos de la licencia GNU Affero General Public License versión 3 y posteriores.
 
 Sin perjuicio de lo especificado en el texto de la licencia, puedes modificar, distribuir y utilizar este proyecto, incluso con fines comerciales, siempre y cuando cites mi *copyright*, mantengas este aviso y publiques el código fuente de tus modificaciones.
 
