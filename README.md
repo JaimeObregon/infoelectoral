@@ -50,12 +50,10 @@ Así, por ejemplo puedes valerte de `wget -i municipales.txt` para descargar tod
 En [el directorio `/files`](/files) de este repositorio se ha posprocesado cada fichero `.zip` descargado de la fuente oficial. Este posprocesado no altera ni desnaturaliza los datos:
 
 1. Cada fichero se ha descomprimido, preservando su nombre de fichero, en el subdirectorio correspondiente al tipo de proceso electoral al que pertenece.
-
   Por ejemplo, `04199105_TOTA.zip` se ha descomprimido en `municipales/04199105_TOTA`.
 
 2. Los ficheros `FICHEROS.DOC` y `FICHEROS.rtf` que el Ministerio incluye en cada uno de los ficheros `.zip` han sido eliminados de cada subdirectorio descomprimido tras comprobar que son exactamente los mismos ficheros en todos y cada uno de los ficheros `.zip`.
-
-  Estos dos ficheros `.DOC` y `.rtf` pueden encontrarse en [`/files`](/files).
+  Como además `FICHEROS.DOC` y `FICHEROS.rtf` son exactamente el mismo documento en dos formatos diferentes, he eliminado el segundo y dejado una única copia del primero que puede encontrarse en [`/files`](/files).
 
 # Agradecimientos
 
