@@ -45,6 +45,18 @@ Para evitarte este tedioso trabajo manual, este repositorio reúne ya **una copi
 
 Así, por ejemplo puedes valerte de `wget -i municipales.txt` para descargar todos los ficheros oficiales de todas las elecciones municipales.
 
+## ¿Qué posprocesado se ha hecho aquí de los datos oficiales?
+
+En [el directorio `/files`](/files) de este repositorio se ha posprocesado cada fichero `.zip` descargado de la fuente oficial. Este posprocesado no altera ni desnaturaliza los datos:
+
+1. Cada fichero se ha descomprimido, preservando su nombre de fichero, en el subdirectorio correspondiente al tipo de proceso electoral al que pertenece.
+
+  Por ejemplo, `04199105_TOTA.zip` se ha descomprimido en `municipales/04199105_TOTA`.
+
+2. Los ficheros `FICHEROS.DOC` y `FICHEROS.rtf` que el Ministerio incluye en cada uno de los ficheros `.zip` han sido eliminados de cada subdirectorio descomprimido tras comprobar que son exactamente los mismos ficheros en todos y cada uno de los ficheros `.zip`.
+
+  Estos dos ficheros `.DOC` y `.rtf` pueden encontrarse en [`/files`](/files).
+
 # Agradecimientos
 
 Este proyecto es posible gracias al micromecenazgo (*crowdfunding*) de varios cientos de personas que con su generoso apoyo están haciendo posible **que desarrolle herramientas digitales para dar más transparencia a las cosas del sector público en España**.
