@@ -21,4 +21,20 @@
  * @license       https://www.gnu.org/licenses/agpl-3.0.en.html
  */
 
-// (╯°□°)╯︵ ┻━┻
+require 'includes/constants.php';
+require 'includes/formats.php';
+
+const FILENAME = '../files/municipales/04201105_TOTA/04041105.DAT';
+
+$lines = file(FILENAME);
+foreach ($lines as $line) {
+	$results = [];
+	foreach ($format['04'] as $name => $field) {
+		$value = substr($line, $field['start'] - 1, $field['length']);
+		$result = $field['formatter']($value, $line);
+		if (!is_null($result)) {
+			$results[$name] = $result;
+		}
+	}
+	print_r($results);
+}

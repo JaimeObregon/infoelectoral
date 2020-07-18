@@ -6,7 +6,7 @@ Este repositorio refleja (*mirror*), reúne y simplifica el acceso a los datos d
 
 # Qué es esto
 
-El Ministerio del Interior español está a cargo de los procesos electorales en España. Y publica no solo los resultados electorales detallados sino además otra mucha información adicional entre la que **las listas electorales** me parecen particularmente interesantes para los objetivos de la Chanchullopedia.
+El Ministerio del Interior español está a cargo de los procesos electorales en España. Y publica no solo los resultados electorales detallados sino además otra mucha información adicional entre la que **las listas electorales** me parecen particularmente interesantes para los objetivos de la Chanchullopedia™.
 
 Estas listas reflejan **la composición de las candidaturas electorales a todos los comicios** europeos, estatales (Congreso y Senado), autonómicos y municipales, incluyendo los cabildos canarios. Se trata, en definitiva, de un conjunto de datos de un elevado valor investigativo e histórico que comprende miles de agrupaciones electorales y el nombre de cientos de miles de candidatos.
 
@@ -45,13 +45,17 @@ Para evitarte este tedioso trabajo manual, este repositorio reúne ya **una copi
 
 Así, por ejemplo puedes valerte de `wget -i municipales.txt` para descargar todos los ficheros oficiales de todas las elecciones municipales.
 
-## ¿Qué posprocesado se ha hecho aquí de los datos oficiales?
+## ¿Qué posprocesado he hecho aquí con los datos oficiales?
 
 En [el directorio `/files`](/files) de este repositorio he posprocesado cada fichero `.zip` descargado de la fuente oficial. Este posprocesado no altera ni desnaturaliza los datos:
 
 1. Cada fichero se ha descomprimido, preservando su nombre de fichero, en el subdirectorio correspondiente al tipo de proceso electoral al que pertenece. Por ejemplo, `04199105_TOTA.zip` se ha descomprimido en `municipales/04199105_TOTA`.
 
 2. Los ficheros `FICHEROS.DOC` y `FICHEROS.rtf` que el Ministerio incluye en cada uno de los ficheros `.zip` han sido eliminados de cada subdirectorio descomprimido tras comprobar que son exactamente los mismos ficheros en todos y cada uno de los ficheros `.zip`. Como además `FICHEROS.DOC` y `FICHEROS.rtf` son exactamente el mismo documento en dos formatos diferentes, he eliminado el segundo y dejado una única copia del primero que puede encontrarse en [`/files`](/files).
+
+# Requisitos y tecnología
+
+El intérprete está escrito en PHP, del que se requiere al menos la versión 7.4.
 
 # Agradecimientos
 
@@ -92,4 +96,4 @@ de la GNU Affero General Public License versión 3 y posteriores, publicada por 
 
 Este programa se distribuye con la esperanza de ser útil, pero **sin garantía alguna**; incluso sin la garantía implícita de que pueda ser **comercializable** o **válido para un propósito concreto**. Para más detalles lee la [licencia GNU Affero General Public License](/LICENSE).
 
-Con este programa recibes una copia de dicha licencia, pero en todo caso puedes leerla en [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
+Con este programa recibes una copia de dicha licencia, pero en todo caso puedes leerla en [`https://www.gnu.org/licenses/`](https://www.gnu.org/licenses/).
