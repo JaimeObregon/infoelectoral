@@ -27,9 +27,115 @@
  */
 
 $format = [
+	// Fichero de identificación del proceso electoral
+	'02' => [
+		// Tipo de elección
+		'Tipo de elección' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => fn($code) => PROCESOS[$code],
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Tipo de ámbito
+		'Tipo de ámbito' => [
+			'start' => 10,
+			'length' => 1,
+			'formatter' => function($code) {
+				$map = [
+					'N' => 'Nacional',
+					'A' => 'Autonómico',
+				];
+				return $map[$code];
+			},
+		],
+
+		// Ámbito territorial del proceso electoral
+		'Ámbito' => [
+			'start' => 11,
+			'length' => 2,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				$ambito = substr($line, 9, 1);
+				if (in_array($proceso, ['05', '06', '15']) || ($proceso === '01' && $ambito === 'A')) {
+					return AUTONOMIAS[$code];
+				}
+			}
+		],
+
+		// Día de la fecha de celebración del proceso electoral
+		'Día de celebración' => [
+			'start' => 13,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Mes de la fecha de celebración del proceso electoral
+		'Mes de celebración' => [
+			'start' => 15,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Año de la fecha de celebración del proceso electoral
+		'Año de celebración' => [
+			'start' => 17,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Hora de apertura de los ‘Colegios Electorales’ (en formato ‘HH:MM’ de 24 horas)
+		'Hora de apertura' => [
+			'start' => 21,
+			'length' => 5,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Hora de cierre de los ‘Colegios Electorales’ (en formato ‘HH:MM’ de 24 horas)
+		'Hora de cierre' => [
+			'start' => 26,
+			'length' => 5,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Hora del primer ‘Avance de Participación’ (en formato ‘HH:MM’ de 24 horas)
+		'Hora del primer avance de participación' => [
+			'start' => 31,
+			'length' => 5,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Hora del segundo ‘Avance de Participación’ (en formato ‘HH:MM’ de 24 horas)
+		'Hora del segundo avance de participación' => [
+			'start' => 36,
+			'length' => 5,
+			'formatter' => fn($code) => $code,
+		],
+	],
+
 	// Fichero de candidaturas
 	'03' => [
-		// Tipo de elección.
+		// Tipo de elección
 		'Tipo de elección' => [
 			'start' => 1,
 			'length' => 2,
@@ -91,7 +197,6 @@ $format = [
 			'length' => 6,
 			'formatter' => fn($code) => $code,
 		],
-
 	],
 
 	// Fichero de relación de candidatos
@@ -185,7 +290,7 @@ $format = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Tipo de candidato (T = Titular, S = Suplente)
+		// Tipo de candidato
 		'Tipo de candidato' => [
 			'start' => 25,
 			'length' => 1,
