@@ -27,6 +27,73 @@
  */
 
 $format = [
+	// Fichero de candidaturas
+	'03' => [
+		// Tipo de elección.
+		'Tipo de elección' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => fn($code) => PROCESOS[$code],
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Código de la candidatura
+		'Código' => [
+			'start' => 9,
+			'length' => 6,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Siglas de la candidatura
+		'Siglas' => [
+			'start' => 15,
+			'length' => 50,
+			'formatter' => fn($code) => trim(utf8_encode($code)),
+		],
+
+		// Denominación de la candidatura
+		'Candidatura' => [
+			'start' => 65,
+			'length' => 150,
+			'formatter' => fn($code) => trim(utf8_encode($code)),
+		],
+
+		// Código de la candidatura cabecera de acumulación a nivel provincial
+		'Candidatura provincial' => [
+			'start' => 215,
+			'length' => 6,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la candidatura cabecera de acumulación a nivel autonómico
+		'Candidatura autonómica' => [
+			'start' => 221,
+			'length' => 6,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la candidatura cabecera de acumulación a nivel nacional
+		'Candidatura nacional' => [
+			'start' => 227,
+			'length' => 6,
+			'formatter' => fn($code) => $code,
+		],
+
+	],
+
 	// Fichero de relación de candidatos
 	'04' => [
 		// Tipo de elección
