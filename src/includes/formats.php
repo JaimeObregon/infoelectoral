@@ -26,7 +26,7 @@
  * Véase documento `FICHEROS.doc`
  */
 
-$format = [
+$formats = [
 	// Fichero de identificación del proceso electoral
 	'02' => [
 		// Tipo de elección
@@ -62,11 +62,10 @@ $format = [
 			'start' => 10,
 			'length' => 1,
 			'formatter' => function($code) {
-				$map = [
+				return [
 					'N' => 'Nacional',
 					'A' => 'Autonómico',
-				];
-				return $map[$code];
+				][$code];
 			},
 		],
 
@@ -295,11 +294,10 @@ $format = [
 			'start' => 25,
 			'length' => 1,
 			'formatter' => function($code) {
-				$map = [
+				return [
 					'T' => 'Titular',
 					'S' => 'Suplente',
-				];
-				return $map[$code];
+				][$code];
 			},
 		],
 
@@ -329,11 +327,10 @@ $format = [
 			'start' => 101,
 			'length' => 1,
 			'formatter' => function($code) {
-				$map = [
+				return [
 					'M' => 'Hombre',
 					'F' => 'Mujer',
-				];
-				return $map[$code];
+				][$code];
 			},
 		],
 
@@ -370,11 +367,10 @@ $format = [
 			'start' => 120,
 			'length' => 1,
 			'formatter' => function($code) {
-				$map = [
+				return [
 					'S' => 'Sí',
 					'N' => 'No',
-				];
-				return $map[$code];
+				][$code];
 			},
 		],
 	],
