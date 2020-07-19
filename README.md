@@ -1,5 +1,9 @@
 # infoelectoral
 
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+[![HitCount](http://hits.dwyl.com/JaimeObregon/infoelectoral.svg)](http://hits.dwyl.com/JaimeObregon/infoelectoral)
+<span class="badge-patreon"><a href="https://patreon.com/jaime_gomez_obregon" title="Apoya este proyecto en Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Botón para donar en Patreon" /></a></span>
+
 Intérprete de candidaturas electorales del Ministerio del Interior español.
 
 Este repositorio refleja (*mirror*), reúne y simplifica el acceso a los datos de los procesos electorales en España. Es parte de [la Chanchullopedia™](https://twitter.com/JaimeObregon/status/1274331563254259713), un proyecto personal de Jaime Gómez-Obregón que busca [cruzar las adjudicaciones de contratos del sector público español con las listas electorales](https://twitter.com/JaimeObregon/status/1273814894840856576) para aflorar y exponer [chanchullos con dinero público](https://twitter.com/JaimeObregon/status/1271790012464599040).
@@ -55,7 +59,21 @@ En [el directorio `/files`](/files) de este repositorio he posprocesado cada fic
 
 # Requisitos y tecnología
 
-El intérprete está escrito en PHP, del que se requiere al menos la versión 7.4.
+El intérprete está escrito en PHP, del que se requiere al menos la versión 7.4. No hay otras dependencias.
+
+# Comunidad y soporte
+
+Ten en cuenta que este repositorio es un subproducto colateral de un proyecto más ambicioso que está en ciernes: la Chanchullopedia™. No obstante, y como en cualquier proyecto de software libre, son muy bienvenidas las contribuciones:
+
+- Siéntete libre de **[enviar pull requests con tus aportaciones](https://github.com/jaimeobregon/infoelectoral/pulls) o [abrir issues aquí en Github](https://github.com/jaimeobregon/infoelectoral/issues)**.
+
+- Si tienes alguna duda, comentario o petición, igualmente **puedes abrir un issue**.
+
+- Si quieres dirigirte específicamente a mí como promotor de este proyecto o de la Chanchullopedia™, **[envíame un tuit](https://twitter.com/JaimeObregon) público o privado**. En general no suelo hacer mucho caso al correo electrónico así que por favor trata de no eviarme correo.
+
+- Si deseas garantizar el futuro del proyecto o que te informe directa y periódicamente de su desarrollo, [puedes **hacerte mecenas en Patreon**](https://www.patreon.com/jaime_gomez_obregon).
+
+Dicho esto, mi idea es **articular una comunidad de desarrolladores** en torno a la idea de [dar más transparencia a la contratación del sector público en España](https://twitter.com/JaimeObregon/status/1284444424634871808). Al menos por el momento, planteo que esta actividad tenga su epicentro aquí en Github, y descarto abrir un Discord o similar [por varias razones](https://twitter.com/JaimeObregon/status/1281954005846024200).
 
 # Agradecimientos
 
