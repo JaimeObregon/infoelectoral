@@ -27,6 +27,187 @@
  */
 
 $formats = [
+	// Fichero de control de los ficheros que componen el proceso electoral
+	'01' => [
+		// Tipo de elección
+		'Tipo de elección' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => fn($code) => PROCESOS[$code],
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Si se adjunta o no el fichero 02xxaamm.dat
+		'Contiene el fichero 02 (' . FICHEROS['02'] . ')' => [
+			'start' => 11,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 03xxaamm.dat
+		'Contiene el fichero 03 (' . FICHEROS['03'] . ')' => [
+			'start' => 12,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 04xxaamm.dat
+		'Contiene el fichero 04 (' . FICHEROS['04'] . ')' => [
+			'start' => 13,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 05xxaamm.dat
+		'Contiene el fichero 05 (' . FICHEROS['05'] . ')' => [
+			'start' => 14,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 06xxaamm.dat
+		'Contiene el fichero 06 (' . FICHEROS['06'] . ')' => [
+			'start' => 15,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 07xxaamm.dat
+		'Contiene el fichero 07 (' . FICHEROS['07'] . ')' => [
+			'start' => 16,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 08xxaamm.dat
+		'Contiene el fichero 08 (' . FICHEROS['08'] . ')' => [
+			'start' => 17,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 09xxaamm.dat
+		'Contiene el fichero 09 (' . FICHEROS['09'] . ')' => [
+			'start' => 18,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 10xxaamm.dat
+		'Contiene el fichero 10 (' . FICHEROS['10'] . ')' => [
+			'start' => 19,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 1104aamm.dat
+		'Contiene el fichero 1104 (' . FICHEROS['11'] . ')' => [
+			'start' => 20,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 1204aamm.dat
+		'Contiene el fichero 1204 (' . FICHEROS['12'] . ')' => [
+			'start' => 21,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 0510aamm.dat
+		'Contiene el fichero 0510 (' . FICHEROS['05'] . ')' => [
+			'start' => 22,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 0610aamm.dat
+		'Contiene el fichero 0610 (' . FICHEROS['06'] . ')' => [
+			'start' => 23,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 0710aamm.dat
+		'Contiene el fichero 0710 (' . FICHEROS['07'] . ')' => [
+			'start' => 24,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+
+		// Si se adjunta o no el fichero 0810aamm.dat
+		'Contiene el fichero 0810 (' . FICHEROS['08'] . ')' => [
+			'start' => 25,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'1' => 'Sí',
+				'0' => 'No',
+			][$code],
+		],
+	],
+
 	// Fichero de identificación del proceso electoral
 	'02' => [
 		// Tipo de elección
