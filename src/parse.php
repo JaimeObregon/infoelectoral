@@ -24,12 +24,36 @@
 require 'includes/constants.php';
 require 'includes/formats.php';
 
-const FILENAME = '../files/municipales/04201105_TOTA/04041105.DAT';
+if (count($argv) != 2) {
+    printf("Uso: %s [FICHERO.DAT]\n", $argv[0]);
+    die;
+}
 
-$lines = file(FILENAME);
+$filename = $argv[1];
+
+/**
+ * La especificación define literalmente así la nomenclatura de los ficheros .DAT:
+ * nnxxaamm.dat
+ * - nn: Código identificativo del tipo de fichero
+ * - xx: Tipo de proceso electoral
+ * - aa: Dos últimas cifras del año de celebración del proceso electoral
+ * - mm: Dos dígitos correspondientes al mes de celebración del proceso electoral
+ * - dat: Es siempre la extensión de los ficheros
+ */
+preg_match('#(\d{2})(\d{2})(\d{2})(\d{2})\.DAT#i', $filename, $matches);
+list(, $nn, $xx, $aa, $mm) = $matches;
+$file = [
+	'Tipo de fichero' => FICHEROS[$nn],
+	'Tipo de proceso electoral' => PROCESOS[$xx],
+	'Año del proceso electoral' => ($aa > 70 ? '19' : '20') . $aa,
+	'Mes del proceso electoral' => (int) $mm,
+];
+print_r($file);
+
+$lines = file($filename);
 foreach ($lines as $line) {
 	$results = [];
-	foreach ($format['04'] as $name => $field) {
+	foreach ($formats[$nn] as $name => $field) {
 		$value = substr($line, $field['start'] - 1, $field['length']);
 		$result = $field['formatter']($value, $line);
 		if (!is_null($result)) {
