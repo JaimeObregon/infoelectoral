@@ -69,9 +69,9 @@ Ten en cuenta que este repositorio es un subproducto colateral de un proyecto m�
 
 - Si tienes alguna duda, comentario o petición, igualmente **puedes abrir un issue**.
 
-- Si quieres dirigirte específicamente a mí como promotor de este proyecto o de la Chanchullopedia™, **[envíame un tuit](https://twitter.com/JaimeObregon) público o privado**. En general no suelo hacer mucho caso al correo electrónico así que por favor trata de no eviarme correo.
+- Si quieres dirigirte específicamente a mí como promotor de este proyecto o de la Chanchullopedia™, **[envíame un tuit](https://twitter.com/JaimeObregon) público o privado** (mensaje directo). En general no suelo hacer mucho caso al correo electrónico así que por favor trata de no enviarme correo.
 
-- Si deseas garantizar el futuro del proyecto o que te informe directa y periódicamente de su desarrollo, [puedes **hacerte mecenas en Patreon**](https://www.patreon.com/jaime_gomez_obregon).
+- Si deseas garantizar el futuro del proyecto y además que te informe directa y periódicamente de su desarrollo, [puedes **hacerte mecenas en Patreon**](https://www.patreon.com/jaime_gomez_obregon).
 
 Dicho esto, mi idea es **articular una comunidad de desarrolladores** en torno a la idea de [dar más transparencia a la contratación del sector público en España](https://twitter.com/JaimeObregon/status/1284444424634871808). Al menos por el momento, planteo que esta actividad tenga su epicentro aquí en Github, y descarto abrir un Discord o similar [por varias razones](https://twitter.com/JaimeObregon/status/1281954005846024200).
 
