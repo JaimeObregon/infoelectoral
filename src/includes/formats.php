@@ -402,7 +402,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta = 1)
+		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -553,6 +553,223 @@ $formats = [
 					'N' => 'No',
 				][$code];
 			},
+		],
+	],
+
+	// Fichero de datos comunes de municipios
+	'05' => [
+		// Tipo de elección
+		'Tipo de elección' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => fn($code) => PROCESOS[$code],
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la comunidad autónoma
+		'Comunidad autónoma' => [
+			'start' => 10,
+			'length' => 2,
+			'formatter' => fn($code) => AUTONOMIAS[$code],
+		],
+
+		// Código INE de la provincia
+		'Provincia' => [
+			'start' => 12,
+			'length' => 2,
+			'formatter' => fn($code) => PROVINCIAS[$code],
+		],
+
+		// Código INE del municipio
+		'Municipio' => [
+			'start' => 14,
+			'length' => 3,
+			'formatter' => function($code, $line) {
+				$provincia = substr($line, 11, 2);
+				return MUNICIPIOS[$provincia . $code];
+			},
+		],
+
+		// Número de distrito municipal
+		'Número de distrito' => [
+			'start' => 17,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '99' ? null : $code,
+		],
+
+		// Nombre del municipio o del distrito municipal
+		'Nombre del municipio' => [
+			'start' => 19,
+			'length' => 100,
+			'formatter' => function($code, $line) {
+				$distrito = substr($line, 16, 2);
+				return $distrito === '99' ? trim(utf8_encode($code)) : null;
+			},
+		],
+		'Nombre del distrito' => [
+			'start' => 19,
+			'length' => 100,
+			'formatter' => function($code, $line) {
+				$distrito = substr($line, 16, 2);
+				return $distrito !== '99' ? trim(utf8_encode($code)) : null;
+			},
+		],
+
+		// Código del distrito electoral, o 0 en elecciones que no tienen este tipo de circunscripción
+		'Distrito electoral' => [
+			'start' => 119,
+			'length' => 1,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Código del partido judicial
+		'Partido judicial' => [
+			'start' => 120,
+			'length' => 3,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la diputación provincial
+		'Diputación provincial' => [
+			'start' => 123,
+			'length' => 3,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la comarca
+		'Comarca' => [
+			'start' => 126,
+			'length' => 3,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Población de derecho
+		'Población de derecho' => [
+			'start' => 129,
+			'length' => 8,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Número de mesas
+		'Número de mesas' => [
+			'start' => 137,
+			'length' => 5,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo del INE
+		'Censo del INE' => [
+			'start' => 142,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo de escrutinio
+		'Censo de escrutinio' => [
+			'start' => 150,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo CERE en escrutinio (residentes extranjeros)
+		'Censo CERE en escrutinio' => [
+			'start' => 158,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Total votantes CERE (residentes extranjeros)
+		'Total votantes CERE' => [
+			'start' => 166,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votantes del primer avance de participación
+		'Votantes del primer avance' => [
+			'start' => 174,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votantes del segundo avance de participación
+		'Votantes del segundo avance' => [
+			'start' => 182,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos en blanco
+		'Votantes en blanco' => [
+			'start' => 190,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos nulos
+		'Votantes nulos' => [
+			'start' => 198,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos a candidaturas
+		'Votantes a candidaturas' => [
+			'start' => 206,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de escaños a distribuir cuando el municipio es la circunscripción electoral.
+		// Ceros en otros casos.
+		'Número de escaños' => [
+			'start' => 214,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Votos afirmativos en referéndum, o ceros en otros procesos electorales
+		'Votos afirmativos' => [
+			'start' => 217,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Votos negativos en referéndum, o ceros en otros procesos electorales
+		'Votos negativos' => [
+			'start' => 225,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Datos oficiales
+		'Datos oficiales' => [
+			'start' => 233,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'S' => 'Sí',
+				'N' => 'No',
+			][$code],
 		],
 	],
 ];
