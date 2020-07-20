@@ -1179,4 +1179,210 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 	],
+
+	// Fichero de datos comunes de mesas y del CERA
+	'09' => [
+		// Tipo de elección
+		'Tipo de elección' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => fn($code) => PROCESOS[$code],
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta = 1) o número de pregunta en referéndum
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso !== '01') {
+					return $code;
+				}
+			}
+		],
+		'Número de pregunta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso === '01') {
+					return $code;
+				}
+			}
+		],
+
+		// Código de la comunidad autónoma. O 99 en el caso de total nacional del CERA.
+		'Comunidad autónoma' => [
+			'start' => 10,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '99' ? null : AUTONOMIAS[$code],
+		],
+
+		// Código INE de la provincia. O 99 son datos a nivel total autonómico o nacional del CERA.
+		'Provincia' => [
+			'start' => 12,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '99' ? null : PROVINCIAS[$code],
+		],
+
+		// Código INE del municipio. 999 = CERA.
+		'Municipio' => [
+			'start' => 14,
+			'length' => 3,
+			'formatter' => function($code, $line) {
+				if ($code !== '999') {
+					$provincia = substr($line, 11, 2);
+					return MUNICIPIOS[$provincia . $code];
+				}
+			},
+		],
+		'CERA' => [
+			'start' => 14,
+			'length' => 3,
+			'formatter' => function($code, $line) {
+				if ($code === '999') {
+					return 'Sí';
+				}
+			},
+		],
+
+		// Número de distrito municipal en su caso o 01 si el municipio no tiene distritos.
+		// En el caso de datos procedentes del CERA, llevará el número del distrito electoral
+		// a que correspondan, o 09 si el ámbito de dicho distrito coincide con el de la provincia.
+		'Número de distrito' => [
+			'start' => 17,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '01' ? null : $code,
+		],
+
+		// Código de la sección (tres dígitos seguidos de un espacio, letra mayúscula u otro dígito)
+		'Código de sección' => [
+			'start' => 19,
+			'length' => 4,
+			'formatter' => fn($code) => $code === '0000' ? null : $code,
+		],
+
+		// Código de mesa (una letra mayúscula identificando la mesa o una ‘U’ en caso de mesa única)
+		'Código de mesa' => [
+			'start' => 23,
+			'length' => 1,
+			'formatter' => fn($code) => $code === 'U' ? null : $code,
+		],
+
+		// Censo del INE
+		'Censo del INE' => [
+			'start' => 24,
+			'length' => 7,
+			'formatter' => fn($code) => $code === '0000000' ? null : (int) $code,
+		],
+
+		// Censo de escrutinio o censo CERA
+		'Censo de escrutinio' => [
+			'start' => 31,
+			'length' => 7,
+			'formatter' => function($code, $line) {
+				$municipio = substr($line, 13, 3);
+				if ($municipio !== '999') {
+					return (int) $code;
+				}
+			},
+		],
+		'Censo CERA' => [
+			'start' => 31,
+			'length' => 7,
+			'formatter' => function($code, $line) {
+				$municipio = substr($line, 13, 3);
+				if ($municipio === '999') {
+					return (int) $code;
+				}
+			},
+		],
+
+		// Censo CERE en escrutinio (residentes extranjeros)
+		'Censo CERE en escrutinio' => [
+			'start' => 38,
+			'length' => 7,
+			'formatter' => fn($code) => $code === '0000000' ? null : (int) $code,
+		],
+
+		// Total votantes CERE (residentes extranjeros)
+		'Total votantes CERE' => [
+			'start' => 45,
+			'length' => 7,
+			'formatter' => fn($code) => $code === '0000000' ? null : (int) $code,
+		],
+
+		// Votantes del primer avance de participación
+		'Votantes del primer avance' => [
+			'start' => 52,
+			'length' => 7,
+			'formatter' => fn($code) => $code === '0000000' ? null : (int) $code,
+		],
+
+		// Votantes del segundo avance de participación
+		'Votantes del segundo avance' => [
+			'start' => 59,
+			'length' => 7,
+			'formatter' => fn($code) => $code === '0000000' ? null : (int) $code,
+		],
+
+		// Votos en blanco
+		'Votantes en blanco' => [
+			'start' => 66,
+			'length' => 7,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos nulos
+		'Votantes nulos' => [
+			'start' => 73,
+			'length' => 7,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos a candidaturas
+		'Votantes a candidaturas' => [
+			'start' => 80,
+			'length' => 7,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos afirmativos en referéndum, o ceros en otros procesos electorales
+		'Votos afirmativos' => [
+			'start' => 87,
+			'length' => 7,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Votos negativos en referéndum, o ceros en otros procesos electorales
+		'Votos negativos' => [
+			'start' => 94,
+			'length' => 7,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Datos oficiales
+		'Datos oficiales' => [
+			'start' => 101,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'S' => 'Sí',
+				'N' => 'No',
+			][$code],
+		],
+	],
 ];
