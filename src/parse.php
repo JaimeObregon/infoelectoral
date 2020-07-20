@@ -24,6 +24,9 @@
 require 'includes/constants.php';
 require 'includes/formats.php';
 
+// Algunos ficheros particularmente grandes requieren más memoria de la predeterminada
+ini_set('memory_limit', '512M');
+
 if (count($argv) != 2) {
     printf("Uso: %s [FICHERO.DAT]\n", $argv[0]);
     die;
