@@ -872,7 +872,7 @@ $formats = [
 		],
 
 		// Número de candidatos obtenidos por la candidatura
-		'Número de candidatos' => [
+		'Número de candidatos obtenidos' => [
 			'start' => 31,
 			'length' => 3,
 			'formatter' => fn($code) => (int) $code,
@@ -1067,6 +1067,116 @@ $formats = [
 				'S' => 'Sí',
 				'N' => 'No',
 			][$code],
+		],
+	],
+
+	// Fichero de datos de candidaturas de ámbito superior al municipio
+	'08' => [
+		// Tipo de elección
+		'Tipo de elección' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => fn($code) => PROCESOS[$code],
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta = 1)
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la comunidad autónoma. O 99 en el caso de total nacional.
+		'Comunidad autónoma' => [
+			'start' => 10,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '99' ? null : AUTONOMIAS[$code],
+		],
+
+		// Código INE de la provincia. O 99 son datos a nivel total comunidad o total nacional.
+		'Provincia' => [
+			'start' => 12,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '99' ? null : PROVINCIAS[$code],
+		],
+
+		// Código del distrito electoral, o 9 en datos a nivel total provincial, comunidad o nacional
+		'Distrito electoral' => [
+			'start' => 14,
+			'length' => 1,
+			'formatter' => function($code, $line) {
+				if ($code === '9') {
+					return null;
+				}
+				$proceso = substr($line, 0, 2);
+				$provincia = substr($line, 11, 2);
+				return DISTRITOS[$proceso][$provincia][$code];
+			},
+		],
+
+		// Código de la candidatura o del senador
+		'Código de candidatura' => [
+			'start' => 15,
+			'length' => 6,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso !== '03') {
+					return $code;
+				}
+			}
+		],
+		'Distrito' => [
+			'start' => 15,
+			'length' => 6,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso === '03') {
+					$provincia = substr($code, 0, 2);
+					$distrito = substr($code, 2, 1);
+					if ($distrito === '9') {
+						return null;
+					}
+					return DISTRITOS[$proceso][$provincia][$distrito];
+				}
+			},
+		],
+		'Número de orden de senador' => [
+			'start' => 15,
+			'length' => 6,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso === '03') {
+					return (int) substr($code, 3, 3);
+				}
+			},
+		],
+
+		// Votos obtenidos por la candidatura
+		'Votos obtenidos' => [
+			'start' => 21,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de candidatos obtenidos por la candidatura
+		'Número de candidatos obtenidos' => [
+			'start' => 29,
+			'length' => 5,
+			'formatter' => fn($code) => (int) $code,
 		],
 	],
 ];
