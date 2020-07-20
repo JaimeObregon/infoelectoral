@@ -4,7 +4,7 @@
 [![HitCount](http://hits.dwyl.com/JaimeObregon/infoelectoral.svg)](http://hits.dwyl.com/JaimeObregon/infoelectoral)
 <span class="badge-patreon"><a href="https://patreon.com/jaime_gomez_obregon" title="Apoya este proyecto en Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Botón para donar en Patreon" /></a></span>
 
-Intérprete de candidaturas electorales del Ministerio del Interior español.
+Intérprete de microdatos electorales del Ministerio del Interior español.
 
 Este repositorio refleja (*mirror*), reúne y simplifica el acceso a los datos de los procesos electorales en España. Es parte de [la Chanchullopedia™](https://twitter.com/JaimeObregon/status/1274331563254259713), un proyecto personal de Jaime Gómez-Obregón que busca [cruzar las adjudicaciones de contratos del sector público español con las listas electorales](https://twitter.com/JaimeObregon/status/1273814894840856576) para aflorar y exponer [chanchullos con dinero público](https://twitter.com/JaimeObregon/status/1271790012464599040).
 
@@ -106,7 +106,7 @@ El Ministerio del Interior no participa, patrocina ni necesariamente apoya la re
 
 ## Apéndice conforme la licencia GNU AGPL
 
-`infoelectoral`, intérprete de candidaturas electorales del Ministerio del Interior español\
+`infoelectoral`, intérprete de microdatos electorales del Ministerio del Interior español\
 Copyright (C) 2020 Jaime Gómez-Obregón
 
 Este repositorio es software libre: puedes redistribuirlo y/o modificarlo bajo los términos

@@ -1,6 +1,6 @@
 <?php
 /**
- * infoelectoral, intérprete de candidaturas electorales del Ministerio del Interior español.
+ * infoelectoral, intérprete de microdatos electorales del Ministerio del Interior español.
  * Copyright (C) 2020 Jaime Gómez-Obregón
  *
  * This program is free software: you can redistribute it and/or modify
