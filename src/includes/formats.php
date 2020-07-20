@@ -50,7 +50,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -231,7 +231,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -402,7 +402,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -579,7 +579,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -667,7 +667,7 @@ $formats = [
 		'Población de derecho' => [
 			'start' => 129,
 			'length' => 8,
-			'formatter' => fn($code) => $code,
+			'formatter' => fn($code) => (int) $code,
 		],
 
 		// Número de mesas
@@ -796,7 +796,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -879,4 +879,194 @@ $formats = [
 		],
 	],
 
+	// Fichero de datos comunes de ámbito superior al municipio
+	'07' => [
+		// Tipo de elección
+		'Tipo de elección' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => fn($code) => PROCESOS[$code],
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta = 1) o número de pregunta en referéndum
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso !== '01') {
+					return $code;
+				}
+			}
+		],
+		'Número de pregunta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso === '01') {
+					return $code;
+				}
+			}
+		],
+
+		// Código de la comunidad autónoma. O 99 en el caso de total nacional.
+		'Comunidad autónoma' => [
+			'start' => 10,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '99' ? null : AUTONOMIAS[$code],
+		],
+
+		// Código INE de la provincia. O 99 son datos a nivel total comunidad o total nacional.
+		'Provincia' => [
+			'start' => 12,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '99' ? null : PROVINCIAS[$code],
+		],
+
+		// Código del distrito electoral, o 9 en datos a nivel total provincial, comunidad o nacional
+		'Distrito electoral' => [
+			'start' => 14,
+			'length' => 1,
+			'formatter' => function($code, $line) {
+				if ($code === '9') {
+					return null;
+				}
+				$proceso = substr($line, 0, 2);
+				$provincia = substr($line, 11, 2);
+				return DISTRITOS[$proceso][$provincia][$code];
+			},
+		],
+
+		// Nombre del ámbito territorial
+		'Ámbito territorial' => [
+			'start' => 15,
+			'length' => 50,
+			'formatter' => fn($code) => trim(utf8_encode($code)),
+		],
+
+		// Población de derecho
+		'Población de derecho' => [
+			'start' => 65,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de mesas
+		'Número de mesas' => [
+			'start' => 73,
+			'length' => 5,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo del INE
+		'Censo del INE' => [
+			'start' => 78,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo de escrutinio
+		'Censo de escrutinio' => [
+			'start' => 86,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo CERE en escrutinio (residentes extranjeros)
+		'Censo CERE en escrutinio' => [
+			'start' => 94,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Total votantes CERE (residentes extranjeros)
+		'Total votantes CERE' => [
+			'start' => 102,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votantes del primer avance de participación
+		'Votantes del primer avance' => [
+			'start' => 110,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votantes del segundo avance de participación
+		'Votantes del segundo avance' => [
+			'start' => 118,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos en blanco
+		'Votantes en blanco' => [
+			'start' => 126,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos nulos
+		'Votantes nulos' => [
+			'start' => 134,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos a candidaturas
+		'Votantes a candidaturas' => [
+			'start' => 142,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de escaños a distribuir cuando el ámbito coincida con la circunscripción electoral,
+		// o total de escaños distribuidos en el ámbito.
+		// Ceros en el caso de que el ámbito sea inferior a la circunscripción electoral
+		'Número de escaños' => [
+			'start' => 150,
+			'length' => 6,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Votos afirmativos en referéndum, o ceros en otros procesos electorales
+		'Votos afirmativos' => [
+			'start' => 156,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Votos negativos en referéndum, o ceros en otros procesos electorales
+		'Votos negativos' => [
+			'start' => 164,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Datos oficiales
+		'Datos oficiales' => [
+			'start' => 172,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'S' => 'Sí',
+				'N' => 'No',
+			][$code],
+		],
+	],
 ];
