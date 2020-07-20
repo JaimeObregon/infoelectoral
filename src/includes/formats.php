@@ -772,4 +772,111 @@ $formats = [
 			][$code],
 		],
 	],
+
+	// Fichero de datos de candidaturas de municipios
+	'06' => [
+		// Tipo de elección
+		'Tipo de elección' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => fn($code) => PROCESOS[$code],
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta o Referéndum = 1)
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código INE de la provincia
+		'Provincia' => [
+			'start' => 10,
+			'length' => 2,
+			'formatter' => fn($code) => PROVINCIAS[$code],
+		],
+
+		// Código INE del municipio
+		'Municipio' => [
+			'start' => 12,
+			'length' => 3,
+			'formatter' => function($code, $line) {
+				$provincia = substr($line, 9, 2);
+				return MUNICIPIOS[$provincia . $code];
+			},
+		],
+
+		// Número de distrito municipal
+		'Número de distrito' => [
+			'start' => 15,
+			'length' => 2,
+			'formatter' => fn($code) => $code === '99' ? null : $code,
+		],
+
+		// Código de la candidatura o del senador
+		'Código de candidatura' => [
+			'start' => 17,
+			'length' => 6,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso !== '03') {
+					return $code;
+				}
+			}
+		],
+		'Distrito' => [
+			'start' => 17,
+			'length' => 6,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso === '03') {
+					$provincia = substr($code, 0, 2);
+					$distrito = substr($code, 2, 1);
+					if ($distrito === '9') {
+						return null;
+					}
+					return DISTRITOS[$proceso][$provincia][$distrito];
+				}
+			},
+		],
+		'Número de orden de senador' => [
+			'start' => 17,
+			'length' => 6,
+			'formatter' => function($code, $line) {
+				$proceso = substr($line, 0, 2);
+				if ($proceso === '03') {
+					return (int) substr($code, 3, 3);
+				}
+			},
+		],
+
+		// Votos obtenidos por la candidatura
+		'Votos obtenidos' => [
+			'start' => 23,
+			'length' => 8,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de candidatos obtenidos por la candidatura
+		'Número de candidatos' => [
+			'start' => 31,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+	],
+
 ];
