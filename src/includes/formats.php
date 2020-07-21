@@ -1701,4 +1701,159 @@ $formats = [
 			][$code],
 		],
 	],
+
+	// Fichero de datos de candidaturas de municipios menores de 250 habitantes.
+	// Solo en elecciones municipales.
+	'12' => [
+		// Tipo de municipio
+		'Tipo de municipio' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => function($code) {
+				return [
+					'08' => 'Entre 100 y 250 habitantes',
+					'09' => 'Menos de 100 habitantes',
+				][$code];
+			},
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta = 1)
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código INE de la provincia
+		'Provincia' => [
+			'start' => 10,
+			'length' => 2,
+			'formatter' => fn($code) => PROVINCIAS[$code],
+		],
+
+		// Código INE del municipio
+		'Municipio' => [
+			'start' => 12,
+			'length' => 3,
+			'formatter' => function($code, $line) {
+				$provincia = substr($line, 9, 2);
+				return MUNICIPIOS[$provincia . $code];
+			},
+		],
+
+		// Código de la candidatura
+		'Código' => [
+			'start' => 15,
+			'length' => 6,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Votos obtenidos por la candidatura
+		'Votos obtenidos' => [
+			'start' => 21,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de candidatos obtenidos por la candidatura
+		'Número de candidatos obtenidos' => [
+			'start' => 24,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Nombre del candidato
+		'Nombre' => [
+			'start' => 26,
+			'length' => 25,
+			'formatter' => fn($code) => trim(utf8_encode($code)),
+		],
+
+		// Primer apellido del candidato
+		'Primer apellido' => [
+			'start' => 51,
+			'length' => 25,
+			'formatter' => fn($code) => trim(utf8_encode($code)),
+		],
+
+		// Segundo apellido del candidato
+		'Segundo apellido' => [
+			'start' => 76,
+			'length' => 25,
+			'formatter' => fn($code) => trim(utf8_encode($code)),
+		],
+
+		// Sexo del candidato
+		'Sexo' => [
+			'start' => 101,
+			'length' => 1,
+			'formatter' => function($code) {
+				return [
+					'M' => 'Hombre',
+					'F' => 'Mujer',
+				][$code];
+			},
+		],
+
+		// Fecha de nacimiento del candidato (DIA)
+		'Día de nacimiento' => [
+			'start' => 102,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Fecha de nacimiento del candidato (MES)
+		'Mes de nacimiento' => [
+			'start' => 104,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Fecha de nacimiento del candidato (AÑO)
+		'Año de nacimiento' => [
+			'start' => 106,
+			'length' => 4,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// DNI
+		'DNI' => [
+			'start' => 110,
+			'length' => 10,
+			'formatter' => fn($code) => trim($code) ?: null,
+		],
+
+		// Votos obtenidos por el candidato
+		'Votos obtenidos' => [
+			'start' => 120,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Candidato elegido (Si/No)
+		'Elegido' => [
+			'start' => 123,
+			'length' => 1,
+			'formatter' => function($code) {
+				return [
+					'S' => 'Sí',
+					'N' => 'No',
+				][$code];
+			},
+		],
+	],
 ];
