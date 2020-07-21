@@ -36,12 +36,12 @@ $filename = $argv[1];
 
 /**
  * La especificación define literalmente así la nomenclatura de los ficheros .DAT:
- * nnxxaamm.dat
- * - nn: Código identificativo del tipo de fichero
- * - xx: Tipo de proceso electoral
- * - aa: Dos últimas cifras del año de celebración del proceso electoral
- * - mm: Dos dígitos correspondientes al mes de celebración del proceso electoral
- * - dat: Es siempre la extensión de los ficheros
+ * `nnxxaamm.dat`
+ * - `nn`: Código identificativo del tipo de fichero
+ * - `xx`: Tipo de proceso electoral
+ * - `aa`: Dos últimas cifras del año de celebración del proceso electoral
+ * - `mm`: Dos dígitos correspondientes al mes de celebración del proceso electoral
+ * - `dat`: Es siempre la extensión de los ficheros
  */
 preg_match('#(\d{2})(\d{2})(\d{2})(\d{2})\.DAT#i', $filename, $matches);
 list(, $nn, $xx, $aa, $mm) = $matches;

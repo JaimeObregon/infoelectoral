@@ -61,13 +61,21 @@ En [el directorio `/files`](/files) de este repositorio he posprocesado cada fic
 
 El intérprete está escrito en PHP, del que se requiere al menos la versión 7.4. No hay otras dependencias.
 
+# Cómo se usa
+
+Desde línea de comandos, lanza [`parse.php`](src/parse.php) con el fichero `.DAT` a interpretar como único argumento. Por ejemplo:
+
+```console
+$ php src/parse.php files/congreso/02201904_MESA/04021904.DAT
+```
+
 # Comunidad y soporte
 
 Ten en cuenta que este repositorio es un subproducto colateral de un proyecto más ambicioso que está en ciernes: la Chanchullopedia™. No obstante, y como en cualquier proyecto de software libre, son muy bienvenidas las contribuciones:
 
-- Siéntete libre de **[enviar pull requests con tus aportaciones](https://github.com/jaimeobregon/infoelectoral/pulls) o [abrir issues aquí en Github](https://github.com/jaimeobregon/infoelectoral/issues)**.
+- Si detectas algún defecto o tienes alguna duda, comentario o petición, **puedes [abrir un issue aquí en Github](https://github.com/jaimeobregon/infoelectoral/issues)**.
 
-- Si tienes alguna duda, comentario o petición, igualmente **puedes abrir un issue**.
+- Siéntete libre de **[enviar pull requests con tus aportaciones](https://github.com/jaimeobregon/infoelectoral/pulls)**, pero antes de contribuir código, por favor abre un *issue* primero y comparte tus planes. Tengo una visión muy clara para este proyecto y sus objetivos, y además unos estándares elevados para mezclar (*merge*) contribuciones, así que poniendo previamente en común tus planes en un *issue* maximizaremos las posibilidades de que sea aceptada.
 
 - Si quieres dirigirte específicamente a mí como promotor de este proyecto o de la Chanchullopedia™, **[envíame un tuit](https://twitter.com/JaimeObregon) público o privado** (mensaje directo). En general no suelo hacer mucho caso al correo electrónico así que por favor trata de no enviarme correo.
 
