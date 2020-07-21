@@ -32,7 +32,9 @@ A fecha de creación de este proyecto (julio de 2020), [la fuente oficial](https
 
     http://www.infoelectoral.mir.es/infoelectoral/min/areaDescarga.html
 
-![Captura de pantalla de la sección de descarga de datos del portal oficial en julio de 2020](/assets/portal-oficial.png)
+| Descarga de datos del portal oficial | Metodología y fuentes |
+| ------------------------------------ | --------------------- |
+| ![Captura de pantalla de la sección de descarga de datos del portal oficial en julio de 2020](/assets/portal-oficial.png) | ![Captura de pantalla de la sección de metodología y fuentes en julio de 2020](/assets/metodologia-y-fuentes.png) |
 
 ## Descarga inicial de los datos oficiales
 
