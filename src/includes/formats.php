@@ -1517,6 +1517,188 @@ $formats = [
 			'length' => 7,
 			'formatter' => fn($code) => (int) $code,
 		],
+	],
 
+	// Fichero de datos comunes en municipios menores de 250 habitantes.
+	// Solo en elecciones municipales.
+	'11' => [
+		// Tipo de municipio
+		'Tipo de municipio' => [
+			'start' => 1,
+			'length' => 2,
+			'formatter' => function($code) {
+				return [
+					'08' => 'Entre 100 y 250 habitantes',
+					'09' => 'Menos de 100 habitantes',
+				][$code];
+			},
+		],
+
+		// Año del proceso electoral
+		'Año' => [
+			'start' => 3,
+			'length' => 4,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Mes del proceso electoral
+		'Mes' => [
+			'start' => 7,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de vuelta (en procesos a una sola vuelta = 1)
+		'Vuelta' => [
+			'start' => 9,
+			'length' => 1,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la comunidad autónoma
+		'Comunidad autónoma' => [
+			'start' => 10,
+			'length' => 2,
+			'formatter' => fn($code) => AUTONOMIAS[$code],
+		],
+
+		// Código INE de la provincia
+		'Provincia' => [
+			'start' => 12,
+			'length' => 2,
+			'formatter' => fn($code) => PROVINCIAS[$code],
+		],
+
+		// Código INE del municipio
+		'Municipio' => [
+			'start' => 14,
+			'length' => 3,
+			'formatter' => function($code, $line) {
+				$provincia = substr($line, 11, 2);
+				return MUNICIPIOS[$provincia . $code];
+			},
+		],
+
+		// Nombre del municipio
+		'Nombre del municipio' => [
+			'start' => 17,
+			'length' => 100,
+			'formatter' => fn($code) => trim(utf8_encode($code)),
+		],
+
+		// Código del partido judicial
+		'Partido judicial' => [
+			'start' => 117,
+			'length' => 3,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la diputación provincial
+		'Diputación provincial' => [
+			'start' => 120,
+			'length' => 3,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Código de la comarca
+		'Comarca' => [
+			'start' => 123,
+			'length' => 3,
+			'formatter' => fn($code) => $code,
+		],
+
+		// Población de derecho
+		'Población de derecho' => [
+			'start' => 126,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de mesas
+		'Número de mesas' => [
+			'start' => 129,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo del INE
+		'Censo del INE' => [
+			'start' => 131,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo de escrutinio
+		'Censo de escrutinio' => [
+			'start' => 134,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Censo CERE en escrutinio (residentes extranjeros)
+		'Censo CERE en escrutinio' => [
+			'start' => 137,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Total votantes CERE (residentes extranjeros)
+		'Total votantes CERE' => [
+			'start' => 140,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votantes del primer avance de participación
+		'Votantes del primer avance' => [
+			'start' => 143,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votantes del segundo avance de participación
+		'Votantes del segundo avance' => [
+			'start' => 146,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos en blanco
+		'Votantes en blanco' => [
+			'start' => 149,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos nulos
+		'Votantes nulos' => [
+			'start' => 152,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Votos a candidaturas
+		'Votantes a candidaturas' => [
+			'start' => 155,
+			'length' => 3,
+			'formatter' => fn($code) => (int) $code,
+		],
+
+		// Número de escaños a distribuir
+		'Número de escaños' => [
+			'start' => 158,
+			'length' => 2,
+			'formatter' => fn($code) => (int) $code ?: null,
+		],
+
+		// Datos oficiales
+		'Datos oficiales' => [
+			'start' => 160,
+			'length' => 1,
+			'formatter' => fn($code) => [
+				'S' => 'Sí',
+				'N' => 'No',
+			][$code],
+		],
 	],
 ];
