@@ -24,6 +24,10 @@
 require 'includes/constants.php';
 require 'includes/formats.php';
 
+/**
+ * Script invocable desde la línea de comandos que decodifica un fichero `.DAT` dado.
+ */
+
 // Algunos ficheros particularmente grandes requieren más memoria de la predeterminada
 ini_set('memory_limit', '512M');
 
