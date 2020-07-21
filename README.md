@@ -10,9 +10,11 @@ Este repositorio refleja (*mirror*), reúne y simplifica el acceso a los datos d
 
 # Qué es esto
 
-El Ministerio del Interior español está a cargo de los procesos electorales en España. Y publica no solo los resultados electorales detallados sino además otra mucha información adicional entre la que **las listas electorales** me parecen particularmente interesantes para los objetivos de la Chanchullopedia™.
+El Ministerio del Interior español está a cargo de los procesos electorales de ámbito estatal en España. Y publica no solo los resultados electorales detallados sino además otra mucha información adicional entre la que **las listas electorales** me parecen particularmente interesantes para los objetivos de la Chanchullopedia™.
 
-Estas listas reflejan **la composición de las candidaturas electorales a todos los comicios** europeos, estatales (Congreso y Senado), autonómicos y municipales, incluyendo los cabildos canarios. Se trata, en definitiva, de un conjunto de datos de un elevado valor investigativo e histórico que comprende miles de agrupaciones electorales y el nombre de cientos de miles de candidatos.
+Estas listas reflejan **la composición de las candidaturas electorales a todos los comicios** europeos, estatales (Congreso y Senado), referéndums y municipales, incluyendo los cabildos canarios. Se trata, en definitiva, de un conjunto de datos de un elevado valor investigativo e histórico que comprende miles de agrupaciones electorales y el nombre de cientos de miles de candidatos.
+
+> :warning: Nótese que el Ministerio **no publica datos de las elecciones autonómicas**.
 
 **La información publicada por el Ministerio no puede ser consumida directamente**: es preciso interpretarla con un software desarrollado *ad hoc* y que implemente la especificación técnica de los particulares formatos informáticos en que las autoridades electorales españolas codifican la información.
 
