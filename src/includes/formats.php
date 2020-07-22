@@ -50,14 +50,14 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
 			'formatter' => fn($code) => $code,
 		],
 
-		// Si se adjunta o no el fichero 02xxaamm.dat
+		// Si se adjunta o no el fichero `02xxaamm.dat`
 		'Contiene el fichero 02 (' . FICHEROS['02'] . ')' => [
 			'start' => 11,
 			'length' => 1,
@@ -67,7 +67,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 03xxaamm.dat
+		// Si se adjunta o no el fichero `03xxaamm.dat`
 		'Contiene el fichero 03 (' . FICHEROS['03'] . ')' => [
 			'start' => 12,
 			'length' => 1,
@@ -77,7 +77,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 04xxaamm.dat
+		// Si se adjunta o no el fichero `04xxaamm.dat`
 		'Contiene el fichero 04 (' . FICHEROS['04'] . ')' => [
 			'start' => 13,
 			'length' => 1,
@@ -87,7 +87,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 05xxaamm.dat
+		// Si se adjunta o no el fichero `05xxaamm.dat`
 		'Contiene el fichero 05 (' . FICHEROS['05'] . ')' => [
 			'start' => 14,
 			'length' => 1,
@@ -97,7 +97,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 06xxaamm.dat
+		// Si se adjunta o no el fichero `06xxaamm.dat`
 		'Contiene el fichero 06 (' . FICHEROS['06'] . ')' => [
 			'start' => 15,
 			'length' => 1,
@@ -107,7 +107,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 07xxaamm.dat
+		// Si se adjunta o no el fichero `07xxaamm.dat`
 		'Contiene el fichero 07 (' . FICHEROS['07'] . ')' => [
 			'start' => 16,
 			'length' => 1,
@@ -117,7 +117,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 08xxaamm.dat
+		// Si se adjunta o no el fichero `08xxaamm.dat`
 		'Contiene el fichero 08 (' . FICHEROS['08'] . ')' => [
 			'start' => 17,
 			'length' => 1,
@@ -127,7 +127,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 09xxaamm.dat
+		// Si se adjunta o no el fichero `09xxaamm.dat`
 		'Contiene el fichero 09 (' . FICHEROS['09'] . ')' => [
 			'start' => 18,
 			'length' => 1,
@@ -137,7 +137,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 10xxaamm.dat
+		// Si se adjunta o no el fichero `10xxaamm.dat`
 		'Contiene el fichero 10 (' . FICHEROS['10'] . ')' => [
 			'start' => 19,
 			'length' => 1,
@@ -147,7 +147,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 1104aamm.dat
+		// Si se adjunta o no el fichero `1104aamm.dat`
 		'Contiene el fichero 1104 (' . FICHEROS['11'] . ')' => [
 			'start' => 20,
 			'length' => 1,
@@ -157,7 +157,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 1204aamm.dat
+		// Si se adjunta o no el fichero `1204aamm.dat`
 		'Contiene el fichero 1204 (' . FICHEROS['12'] . ')' => [
 			'start' => 21,
 			'length' => 1,
@@ -167,7 +167,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 0510aamm.dat
+		// Si se adjunta o no el fichero `0510aamm.dat`
 		'Contiene el fichero 0510 (' . FICHEROS['05'] . ')' => [
 			'start' => 22,
 			'length' => 1,
@@ -177,7 +177,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 0610aamm.dat
+		// Si se adjunta o no el fichero `0610aamm.dat`
 		'Contiene el fichero 0610 (' . FICHEROS['06'] . ')' => [
 			'start' => 23,
 			'length' => 1,
@@ -187,7 +187,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 0710aamm.dat
+		// Si se adjunta o no el fichero `0710aamm.dat`
 		'Contiene el fichero 0710 (' . FICHEROS['07'] . ')' => [
 			'start' => 24,
 			'length' => 1,
@@ -197,7 +197,7 @@ $formats = [
 			][$code],
 		],
 
-		// Si se adjunta o no el fichero 0810aamm.dat
+		// Si se adjunta o no el fichero `0810aamm.dat`
 		'Contiene el fichero 0810 (' . FICHEROS['08'] . ')' => [
 			'start' => 25,
 			'length' => 1,
@@ -231,7 +231,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -284,28 +284,28 @@ $formats = [
 			'formatter' => fn($code) => $code,
 		],
 
-		// Hora de apertura de los ‘Colegios Electorales’ (en formato ‘HH:MM’ de 24 horas)
+		// Hora de apertura de los colegios electorales (en formato `HH:MM` de 24 horas)
 		'Hora de apertura' => [
 			'start' => 21,
 			'length' => 5,
 			'formatter' => fn($code) => $code,
 		],
 
-		// Hora de cierre de los ‘Colegios Electorales’ (en formato ‘HH:MM’ de 24 horas)
+		// Hora de cierre de los colegios electorales (en formato `HH:MM` de 24 horas)
 		'Hora de cierre' => [
 			'start' => 26,
 			'length' => 5,
 			'formatter' => fn($code) => $code,
 		],
 
-		// Hora del primer ‘Avance de Participación’ (en formato ‘HH:MM’ de 24 horas)
+		// Hora del primer avance de participación (en formato `HH:MM` de 24 horas)
 		'Hora del primer avance de participación' => [
 			'start' => 31,
 			'length' => 5,
 			'formatter' => fn($code) => $code,
 		],
 
-		// Hora del segundo ‘Avance de Participación’ (en formato ‘HH:MM’ de 24 horas)
+		// Hora del segundo avance de participación (en formato `HH:MM` de 24 horas)
 		'Hora del segundo avance de participación' => [
 			'start' => 36,
 			'length' => 5,
@@ -402,14 +402,14 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
 			'formatter' => fn($code) => $code,
 		],
 
-		// Código INE de la provincia (99 en elecciones al Parlamento Europeo)
+		// Código INE de la provincia (`99` en elecciones al Parlamento Europeo)
 		'Provincia' => [
 			'start' => 10,
 			'length' => 2,
@@ -417,7 +417,7 @@ $formats = [
 		],
 
 		// Distrito electoral cuando corresponda,
-		// o 9 en elecciones que no tienen este tipo de circunscripción
+		// o `9` en elecciones que no tienen este tipo de circunscripción
 		'Distrito' => [
 			'start' => 12,
 			'length' => 1,
@@ -432,7 +432,7 @@ $formats = [
 		],
 
 		// Código INE del municipio (elecciones municipales) o del senador (elecciones al Senado).
-		// En el resto de procesos electorales es siempre 999.
+		// En el resto de procesos electorales es siempre `999`.
 		'Municipio' => [
 			'start' => 13,
 			'length' => 3,
@@ -583,7 +583,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -639,7 +639,8 @@ $formats = [
 			},
 		],
 
-		// Código del distrito electoral, o 0 en elecciones que no tienen este tipo de circunscripción
+		// Código del distrito electoral, o `0` en elecciones
+		// que no tienen este tipo de circunscripción
 		'Distrito electoral' => [
 			'start' => 119,
 			'length' => 1,
@@ -800,7 +801,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta o referéndum = 1)
+		// Número de vuelta (en procesos a una sola vuelta o referéndum = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -906,7 +907,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta = 1) o número de pregunta en referéndum
+		// Número de vuelta (en procesos a una sola vuelta = `1`) o número de pregunta en referéndum
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -928,21 +929,21 @@ $formats = [
 			}
 		],
 
-		// Código de la comunidad autónoma. O 99 en el caso de total nacional.
+		// Código de la comunidad autónoma. O `99` en el caso de total nacional.
 		'Comunidad autónoma' => [
 			'start' => 10,
 			'length' => 2,
 			'formatter' => fn($code) => $code === '99' ? null : AUTONOMIAS[$code],
 		],
 
-		// Código INE de la provincia. O 99 si son datos a nivel total comunidad o total nacional.
+		// Código INE de la provincia. O `99` si son datos a nivel total comunidad o total nacional.
 		'Provincia' => [
 			'start' => 12,
 			'length' => 2,
 			'formatter' => fn($code) => $code === '99' ? null : PROVINCIAS[$code],
 		],
 
-		// Código del distrito electoral, o 9 en datos a nivel total provincial, comunidad o nacional
+		// Código del distrito electoral, o `9` en datos a nivel total provincial, comunidad o nacional
 		'Distrito electoral' => [
 			'start' => 14,
 			'length' => 1,
@@ -1097,28 +1098,28 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta = 1)
+		// Número de vuelta (en procesos a una sola vuelta = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
 			'formatter' => fn($code) => $code,
 		],
 
-		// Código de la comunidad autónoma. O 99 en el caso de total nacional.
+		// Código de la comunidad autónoma. O `99` en el caso de total nacional.
 		'Comunidad autónoma' => [
 			'start' => 10,
 			'length' => 2,
 			'formatter' => fn($code) => $code === '99' ? null : AUTONOMIAS[$code],
 		],
 
-		// Código INE de la provincia. O 99 si son datos a nivel total comunidad o total nacional.
+		// Código INE de la provincia. O `99` si son datos a nivel total comunidad o total nacional.
 		'Provincia' => [
 			'start' => 12,
 			'length' => 2,
 			'formatter' => fn($code) => $code === '99' ? null : PROVINCIAS[$code],
 		],
 
-		// Código del distrito electoral, o 9 en datos a nivel total provincial, comunidad o nacional
+		// Código del distrito electoral, o `9` en datos a nivel total provincial, comunidad o nacional
 		'Distrito electoral' => [
 			'start' => 14,
 			'length' => 1,
@@ -1207,7 +1208,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta = 1) o número de pregunta en referéndum
+		// Número de vuelta (en procesos a una sola vuelta = `1`) o número de pregunta en referéndum
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -1229,21 +1230,22 @@ $formats = [
 			}
 		],
 
-		// Código de la comunidad autónoma. O 99 en el caso de total nacional del CERA.
+		// Código de la comunidad autónoma. O `99` en el caso de total nacional del CERA.
 		'Comunidad autónoma' => [
 			'start' => 10,
 			'length' => 2,
 			'formatter' => fn($code) => $code === '99' ? null : AUTONOMIAS[$code],
 		],
 
-		// Código INE de la provincia. O 99 si son datos a nivel total autonómico o nacional del CERA.
+		// Código INE de la provincia. O `99` si son datos a nivel total autonómico
+		// o nacional del CERA.
 		'Provincia' => [
 			'start' => 12,
 			'length' => 2,
 			'formatter' => fn($code) => $code === '99' ? null : PROVINCIAS[$code],
 		],
 
-		// Código INE del municipio. 999 = CERA.
+		// Código INE del municipio. `999` = CERA.
 		'Municipio' => [
 			'start' => 14,
 			'length' => 3,
@@ -1264,9 +1266,9 @@ $formats = [
 			},
 		],
 
-		// Número de distrito municipal en su caso o 01 si el municipio no tiene distritos.
+		// Número de distrito municipal en su caso o `01` si el municipio no tiene distritos.
 		// En el caso de datos procedentes del CERA, llevará el número del distrito electoral
-		// a que correspondan, o 09 si el ámbito de dicho distrito coincide con el de la provincia.
+		// a que correspondan, o `09` si el ámbito de dicho distrito coincide con el de la provincia.
 		'Número de distrito' => [
 			'start' => 17,
 			'length' => 2,
@@ -1280,7 +1282,7 @@ $formats = [
 			'formatter' => fn($code) => $code === '0000' ? null : $code,
 		],
 
-		// Código de mesa (una letra mayúscula identificando la mesa o una ‘U’ en caso de mesa única)
+		// Código de mesa (una letra mayúscula identificando la mesa o una `U` en caso de mesa única)
 		'Código de mesa' => [
 			'start' => 23,
 			'length' => 1,
@@ -1413,28 +1415,29 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta = 1)
+		// Número de vuelta (en procesos a una sola vuelta = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
 			'formatter' => fn($code) => $code,
 		],
 
-		// Código de la comunidad autónoma. O 99 en el caso de total nacional del CERA.
+		// Código de la comunidad autónoma. O `99` en el caso de total nacional del CERA.
 		'Comunidad autónoma' => [
 			'start' => 10,
 			'length' => 2,
 			'formatter' => fn($code) => $code === '99' ? null : AUTONOMIAS[$code],
 		],
 
-		// Código INE de la provincia. O 99 si son datos a nivel total autonómico o nacional del CERA.
+		// Código INE de la provincia. O `99` si son datos a nivel total autonómico
+		// o nacional del CERA.
 		'Provincia' => [
 			'start' => 12,
 			'length' => 2,
 			'formatter' => fn($code) => $code === '99' ? null : PROVINCIAS[$code],
 		],
 
-		// Código INE del municipio. 999 = CERA.
+		// Código INE del municipio. `999` = CERA.
 		'Municipio' => [
 			'start' => 14,
 			'length' => 3,
@@ -1455,9 +1458,9 @@ $formats = [
 			},
 		],
 
-		// Número de distrito municipal en su caso o 01 si el municipio no tiene distritos.
+		// Número de distrito municipal en su caso o `01` si el municipio no tiene distritos.
 		// En el caso de datos procedentes del CERA, llevará el número del distrito electoral
-		// a que correspondan, o 09 si el ámbito de dicho distrito coincide con el de la provincia.
+		// a que correspondan, o `09` si el ámbito de dicho distrito coincide con el de la provincia.
 		'Número de distrito' => [
 			'start' => 17,
 			'length' => 2,
@@ -1471,7 +1474,7 @@ $formats = [
 			'formatter' => fn($code) => $code === '0000' ? null : $code,
 		],
 
-		// Código de mesa (una letra mayúscula identificando la mesa o una ‘U’ en caso de mesa única)
+		// Código de mesa (una letra mayúscula identificando la mesa o una `U` en caso de mesa única)
 		'Código de mesa' => [
 			'start' => 23,
 			'length' => 1,
@@ -1552,7 +1555,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta = 1)
+		// Número de vuelta (en procesos a una sola vuelta = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
@@ -1735,7 +1738,7 @@ $formats = [
 			'formatter' => fn($code) => (int) $code,
 		],
 
-		// Número de vuelta (en procesos a una sola vuelta = 1)
+		// Número de vuelta (en procesos a una sola vuelta = `1`)
 		'Vuelta' => [
 			'start' => 9,
 			'length' => 1,
