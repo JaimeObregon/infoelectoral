@@ -64,8 +64,7 @@ print_r($file);
  * Pero los códigos cambian a comienzos de cada año, por lo que se hace preciso cargar
  * la del año correspondiente.
  */
-$year = '2020';
-require sprintf('includes/municipios/%s.php', $year);
+require sprintf('includes/municipios/%s.php', $year >= 2001 ?: '2001');
 
 $lines = file($filename);
 foreach ($lines as $line) {
