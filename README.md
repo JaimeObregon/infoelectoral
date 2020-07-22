@@ -65,6 +65,18 @@ En [el directorio `/files`](/files) de este repositorio he posprocesado cada fic
 
 El intérprete está escrito en PHP, del que se requiere al menos la versión 7.4. No hay otras dependencias.
 
+## La fiesta de los municipios
+
+Los microdatos codifican numéricamente los municipios conforme el nomenclátor oficial del INE. Así, `Santander` recibe el código `39075`. Pero la tabla que relaciona el código de cada municipio con su nombre **cambia todos los años**.
+
+Esto provoca **la fiesta de los municipios 🥳**: es preciso mantener tantas tablas como años hay desde 2001, y cargar la correspondiente al proceso electoral que se analiza. Este software lo hace automáticamente, pero documento aquí el proceso.
+
+El INE publica la tabla de cada año en un documento de Excel que, a fecha de julio de 2020, puede descargarse de la página ["Relación de municipios y sus códigos por provincias"](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177031&menu=ultiDatos&idp=1254734710990). Como es tedioso descargarlos todos, y por redundar estas tablas y que no se pierdan si el INE decide despublicarlas o romper el mencionado enlace, las he reflejado (*mirror*) en este repositorio. Las encontrarás en [`/assets/municipios`](/assets/municipios).
+
+Pero si por motivos de auditoría u otras razones deseares descargar estos documentos de la fuente original, he compilado las direcciones de todos ellos en [`/assets/municipios.txt`](/assets/municipios.txt). Así puedes valerte, por ejemplo, de `wget -i municipios.txt` para descargar todos estos recursos de su fuente original.
+
+Pero la fiesta de los municipios tiene su resaca. Y es que he tenido que transformar cada hoja de cálculo en una estructura de datos adaptada. Están todas en [`/src/includes/municipios/`](/src/includes/municipios/).
+
 # Cómo se usa
 
 Desde línea de comandos, lanza [`parse.php`](src/parse.php) con el fichero `.DAT` a interpretar como único argumento. Por ejemplo:
