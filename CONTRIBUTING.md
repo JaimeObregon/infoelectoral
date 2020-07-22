@@ -1,4 +1,4 @@
-# Cómunidad, soporte y cómo contribuir
+# Cómo contactar y participar en este proyecto
 
 Ten en cuenta que este repositorio es un subproducto colateral de un proyecto más ambicioso que está en ciernes: la Chanchullopedia™. No obstante, y como en cualquier proyecto de software libre, son muy bienvenidas las contribuciones:
 
@@ -11,3 +11,5 @@ Ten en cuenta que este repositorio es un subproducto colateral de un proyecto m�
 - Si deseas garantizar el futuro del proyecto y además que te informe directa y periódicamente de su desarrollo, [puedes **hacerte mecenas en Patreon**](https://www.patreon.com/jaime_gomez_obregon).
 
 Dicho esto, mi idea es **articular una comunidad de desarrolladores** en torno a la idea de [dar más transparencia a la contratación del sector público en España](https://twitter.com/JaimeObregon/status/1284444424634871808). Al menos por el momento, planteo que esta actividad tenga su epicentro aquí en Github, y descarto abrir un Discord o similar [por varias razones](https://twitter.com/JaimeObregon/status/1281954005846024200).
+
+Como otros muchos proyectos de software libre, este proyecto está presidido por su [**código de conducta**](/CODE_OF_CONDUCT.md).
