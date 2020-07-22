@@ -49,13 +49,23 @@ $filename = $argv[1];
  */
 preg_match('#(\d{2})(\d{2})(\d{2})(\d{2})\.DAT#i', $filename, $matches);
 list(, $nn, $xx, $aa, $mm) = $matches;
+$year = ($aa > 70 ? '19' : '20') . $aa;
+
 $file = [
 	'Tipo de fichero' => FICHEROS[$nn],
 	'Tipo de proceso electoral' => PROCESOS[$xx],
-	'Año del proceso electoral' => ($aa > 70 ? '19' : '20') . $aa,
+	'Año del proceso electoral' => $year,
 	'Mes del proceso electoral' => (int) $mm,
 ];
 print_r($file);
+
+/**
+ * Para la decodificación de los municipios la especificación remite al INE.
+ * Pero los códigos cambian a comienzos de cada año, por lo que se hace preciso cargar
+ * la del año correspondiente.
+ */
+$year = '2020';
+require sprintf('includes/municipios/%s.php', $year);
 
 $lines = file($filename);
 foreach ($lines as $line) {
