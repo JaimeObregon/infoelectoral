@@ -511,6 +511,10 @@ $formats = [
 				return [
 					'M' => 'Hombre',
 					'F' => 'Mujer',
+					// Aunque la especificación no lo contempla, en algunos ficheros como por ejemplo
+					// `municipales/04200305_MESA/04040305.DAT` sucede que este campo es un espacio
+					// en blanco.
+					' '  => null,
 				][$code];
 			},
 		],
