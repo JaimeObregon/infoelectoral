@@ -70,18 +70,17 @@ const MUNICIPIOS = MUNICIPIOS_INE + MUNICIPIOS_INEXISTENTES;
 
 $lines = file($filename);
 foreach ($lines as $line) {
+	// Ficheros como `municipales/04201505_TOTA/04041505.DAT` tienen corrompido
+	// un particular registro. Pero es posible subsanar el error y aquí lo hacemos.
+	// Saludos a Linda M. Peeters, cuya candidatura en 2015 corrompió los ficheros oficiales...
+	if ($nn === '04' && preg_match('/^042015051439153090873009TLinda/', $line)) {
+		$line = str_replace('7000000001', 'F00000000 ', $line);
+	}
 
 	// Ficheros como `municipales/04197904_MUNI/11047904.DAT` tienen algunas líneas corrompidas.
 	// Aquí descartamos dichas líneas.
 	if ($nn === '11' && preg_match('/[SN]$/', $line) === 0) {
 		continue;
-	}
-
-	// Ficheros como `municipales/04201505_TOTA/04041505.DAT` tienen corrompido
-	// un particular registro. Pero es posible subsanar el error y aquí lo hacemos.
-	// Saludos a Linda M. Peeters, cuya candidatura corrompió los ficheros oficiales...
-	if ($nn === '04' && preg_match('/^042015051439153090873009TLinda/', $line)) {
-		$line = str_replace('7000000001', 'F00000000 ', $line);
 	}
 
 	// Ficheros como `municipales/04198305_MUNI/12048305.DAT` tienen también corrompidas algunas

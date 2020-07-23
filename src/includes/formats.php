@@ -425,6 +425,12 @@ $formats = [
 				if ($code === '9') {
 					return null;
 				}
+				// Aunque no está expresamente recogido en la especificación, en los ficheros
+				// `/municipales/04199906_*` este dato puede ser `0`.
+				if ($code === '0') {
+					return null;
+				}
+
 				$proceso = substr($line, 0, 2);
 				$provincia = substr($line, 9, 2);
 				return DISTRITOS[$proceso][$provincia][$code];
@@ -493,14 +499,14 @@ $formats = [
 		'Primer apellido' => [
 			'start' => 51,
 			'length' => 25,
-			'formatter' => fn($code) => trim(utf8_encode($code)),
+			'formatter' => fn($code) => trim(utf8_encode($code)) ?: null,
 		],
 
 		// Segundo apellido del candidato
 		'Segundo apellido' => [
 			'start' => 76,
 			'length' => 25,
-			'formatter' => fn($code) => trim(utf8_encode($code)),
+			'formatter' => fn($code) => trim(utf8_encode($code)) ?: null,
 		],
 
 		// Sexo del candidato
@@ -511,9 +517,9 @@ $formats = [
 				return [
 					'M' => 'Hombre',
 					'F' => 'Mujer',
-					// Aunque la especificación no lo contempla, en algunos ficheros como por ejemplo
-					// `municipales/04200305_MESA/04040305.DAT` sucede que este campo es un espacio
-					// en blanco.
+					// Aunque la especificación no lo contempla, en algunos ficheros como
+					// por ejemplo `municipales/04200305_MESA/04040305.DAT` sucede que este campo
+					// es un espacio en blanco.
 					' '  => null,
 				][$code];
 			},
@@ -544,7 +550,7 @@ $formats = [
 		'DNI' => [
 			'start' => 110,
 			'length' => 10,
-			'formatter' => fn($code) => trim($code) ?: null,
+			'formatter' => fn($code) => trim($code) === '00000000' ? null : (trim($code) ?: null),
 		],
 
 		// Candidato elegido (Si/No)
@@ -1259,7 +1265,7 @@ $formats = [
 		'CERA' => [
 			'start' => 14,
 			'length' => 3,
-			'formatter' => function($code, $line) {
+			'formatter' => function($code) {
 				if ($code === '999') {
 					return 'Sí';
 				}
@@ -1451,7 +1457,7 @@ $formats = [
 		'CERA' => [
 			'start' => 14,
 			'length' => 3,
-			'formatter' => function($code, $line) {
+			'formatter' => function($code) {
 				if ($code === '999') {
 					return 'Sí';
 				}
@@ -1794,14 +1800,14 @@ $formats = [
 		'Primer apellido' => [
 			'start' => 51,
 			'length' => 25,
-			'formatter' => fn($code) => trim(utf8_encode($code)),
+			'formatter' => fn($code) => trim(utf8_encode($code)) ?: null,
 		],
 
 		// Segundo apellido del candidato
 		'Segundo apellido' => [
 			'start' => 76,
 			'length' => 25,
-			'formatter' => fn($code) => trim(utf8_encode($code)),
+			'formatter' => fn($code) => trim(utf8_encode($code)) ?: null,
 		],
 
 		// Sexo del candidato
@@ -1812,6 +1818,10 @@ $formats = [
 				return [
 					'M' => 'Hombre',
 					'F' => 'Mujer',
+					// Aunque la especificación no lo contempla, en algunos ficheros como
+					// por ejemplo `municipales/04200305_MESA/04040305.DAT` sucede que este campo
+					// es un espacio en blanco.
+					' '  => null,
 				][$code];
 			},
 		],
@@ -1841,7 +1851,7 @@ $formats = [
 		'DNI' => [
 			'start' => 110,
 			'length' => 10,
-			'formatter' => fn($code) => trim($code) ?: null,
+			'formatter' => fn($code) => trim($code) === '00000000' ? null : (trim($code) ?: null),
 		],
 
 		// Votos obtenidos por el candidato
