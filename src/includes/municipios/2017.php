@@ -40,7 +40,7 @@
  *
  * En esta estructura de datos solo tomo los cinco primeros dígitos del código del INE.
  */
-const MUNICIPIOS = [
+const MUNICIPIOS_INE = [
 	'01051' => 'Agurain/Salvatierra',
 	'01001' => 'Alegría-Dulantzi',
 	'01002' => 'Amurrio',
