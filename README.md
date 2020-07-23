@@ -85,9 +85,9 @@ Desde línea de comandos, lanza [`parse.php`](src/parse.php) con el fichero `.DA
 $ php src/parse.php files/congreso/02201904_MESA/04021904.DAT
 ```
 
-# Cómo contactar, plantear dudas y contribuir a este proyecto
+# Cómo contactarme, plantear dudas o contribuir
 
-Tanto si deseas **contribuir a este proyecto** como simplemente **plantear una duda, hacer una petición o contactarme**, por favor lee detenidamente por favor las [pautas para participar](/CONTRIBUTING.md).
+Tanto si deseas **contribuir a este proyecto** como simplemente **plantear una duda, hacer una petición o contactarme**, por favor lee detenidamente las [pautas para participar](/CONTRIBUTING.md).
 
 Como otros muchos proyectos de software libre, este proyecto está presidido por su [**código de conducta**](/CODE_OF_CONDUCT.md).
 
