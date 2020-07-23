@@ -71,29 +71,66 @@ foreach ($results as &$result) {
 // Interpreta el contenido del fichero de candidatos
 $results = parseFile('04', $argv[2]);
 foreach ($results as &$result) {
-	$nombre = implode(' ',  [
-		$result['Nombre'],
-		$result['Primer apellido'],
-		$result['Segundo apellido'] ?? '',
-	]);
+	/**
+	 * Aunque la especificación define para los nombres tres campos (`Nombre`, `Primer apelllido` y
+	 * `Segundo apellido`), en la práctica sucede que este criterio solo se aplica en ciertos
+	 * procesos a partir de un determinado año. Y en los años previos los registros no separan el
+	 * nombre y cada uno de los apellidos, sino que consignan todo concatenado en el primero de los
+	 * campos (`Nombre`), desbordando el exceso sucesivamente a los otros dos campos siguientes.
+	 */
+	// En las elecciones a Congreso, Senado, Cabildos y Parlamento Europeo, el cambio de formato se
+	// da en el año 2003. En las municipales, en 2011.
+	if (in_array($file['Proceso'], ['02', '03', '06', '07']) && $file['Año'] >= 2003 ||
+		$file['Proceso'] === '04' && $file['Año'] >= 2011) {
+		$nombre = trim(implode(' ',  [
+			$result['Nombre'],
+			$result['Primer apellido'] ?? '',
+			$result['Segundo apellido'] ?? '',
+		]));
+	}
+	else {
+		$nombre = $result['Nombre'];
+		if (!empty($result['Primer apellido'])) {
+			$separator = mb_strlen($result['Nombre']) === 25 ? '' : ' ';
+			$nombre .= $separator . $result['Primer apellido'];
+			if (!empty($result['Segundo apellido'])) {
+				$separator = mb_strlen($result['Primer apellido']) === 25 ? '' : ' ';
+				$nombre .= $separator . $result['Segundo apellido'];
+			}
+		}
+	}
+
+	// Hagamos un mínimo embellecimiento de la capitaliación...
+	$nombre = mb_convert_case($nombre, MB_CASE_TITLE);
+	$map = [
+		'/ De La /' => ' de la ',
+		'/ Del /' => ' del ',
+		'/ De /' => ' de ',
+		'/ Y /' => ' y ',
+		'/ I /' => ' i ',
+		'/ E /' => ' e ',
+	];
+	$nombre = preg_replace(array_keys($map), array_values($map), $nombre);
+
+	// ...y erradiquemos también los sufijos que entre paréntesis constan a veces. Ejemplos:
+	// - `Ramon Marrero Garcia (Independiente)`
+	// - `Celestino Gonzalez Bolaños (PCE L-M)`
+	$nombre = trim(preg_replace('/\(.+\)\s*$/', '', $nombre));
 
 	$candidatura = $result['Candidatura'];
 
 	$candidato = [
+		'Número de orden' => $result['Número de orden del candidato'],
+		'Elegido' => $result['Elegido'],
+		'Sexo' => $result['Sexo'] ?? null,
 		'Candidato' => $nombre,
 		'Provincia' => $result['Provincia'],
 		'Municipio' => $result['Municipio'],
 		'Siglas' => $candidaturas[$candidatura]['Siglas'] ?? null,
 		'Candidatura' => $candidaturas[$candidatura]['Candidatura'] ?? null,
-		'Número de orden' => $result['Número de orden del candidato'],
-		'Sexo' => $result['Sexo'],
-		'Elegido' => $result['Elegido'],
 	];
 	$candidatos[] = $candidato;
 }
-
-print_r($candidatos);
-die;
 
 // Escribe en `stdout` los resultados en formato CSV
 $output = fopen('php://output', 'w');

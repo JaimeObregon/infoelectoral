@@ -91,6 +91,7 @@ function parseName($filename) {
 		'Fichero' => $filename,
 		'Código' => $nn,
 		'Descripción' => FICHEROS[$nn],
+		'Proceso' => $xx,
 		'Tipo' => PROCESOS[$xx],
 		'Año' => $year,
 		'Mes' => (int) $mm,
