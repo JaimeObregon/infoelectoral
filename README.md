@@ -61,21 +61,9 @@ En [el directorio `/files`](/files) de este repositorio he posprocesado cada fic
 
 2. Los ficheros `FICHEROS.DOC` y `FICHEROS.rtf` que el Ministerio incluye en cada uno de los ficheros `.zip` han sido eliminados de cada subdirectorio descomprimido tras comprobar que son exactamente los mismos ficheros en todos y cada uno de los ficheros `.zip`. Como además `FICHEROS.DOC` y `FICHEROS.rtf` son exactamente el mismo documento en dos formatos diferentes, he eliminado el segundo y dejado una única copia del primero que puede encontrarse en [`/files`](/files).
 
-# Requisitos y tecnología
+# Requisitos
 
 El intérprete está escrito en PHP, del que se requiere al menos la versión 7.4. No hay otras dependencias.
-
-## La fiesta de los municipios
-
-Los microdatos codifican numéricamente los municipios conforme el nomenclátor oficial del INE. Así, `Santander` recibe el código `39075`. Pero la tabla que relaciona el código de cada municipio con su nombre **cambia todos los años**.
-
-Esto provoca **la fiesta de los municipios 🥳**: es preciso mantener tantas tablas como años hay desde 2001, y cargar la correspondiente al proceso electoral que se analiza. Este software lo hace automáticamente, pero documento aquí el proceso.
-
-El INE publica la tabla de cada año en un documento de Excel que, a fecha de julio de 2020, puede descargarse de la página ["Relación de municipios y sus códigos por provincias"](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177031&menu=ultiDatos&idp=1254734710990). Como es tedioso descargarlos todos, y por redundar estas tablas y que no se pierdan si el INE decide despublicarlas o romper el mencionado enlace, las he reflejado (*mirror*) en este repositorio. Las encontrarás en [`/assets/municipios`](/assets/municipios).
-
-Pero si por motivos de auditoría u otras razones deseares descargar estos documentos de la fuente original, he compilado las direcciones de todos ellos en [`/assets/municipios.txt`](/assets/municipios.txt). Así puedes valerte, por ejemplo, de `wget -i municipios.txt` para descargar todos estos recursos de su fuente original.
-
-Pero la fiesta de los municipios tiene su resaca. Y es que he tenido que transformar cada hoja de cálculo en una estructura de datos adaptada. Están todas en [`/src/includes/municipios/`](/src/includes/municipios/).
 
 # Cómo se usa
 
@@ -87,7 +75,7 @@ $ php src/parse.php files/congreso/02201904_MESA/04021904.DAT
 
 # Cómo contactarme, plantear dudas o contribuir
 
-Tanto si deseas **contribuir a este proyecto** como simplemente **plantear una duda, hacer una petición o contactarme**, por favor lee detenidamente las [pautas para participar](/CONTRIBUTING.md).
+Tanto si deseas **contribuir a este proyecto** como simplemente **plantear una duda, hacer una petición o contactarme**, por favor lee detenidamente las [pautas para participar](/CONTRIBUTING.md), que contienen además algunos detalles técnicos relevantes.
 
 Como otros muchos proyectos de software libre, este proyecto está presidido por su [**código de conducta**](/CODE_OF_CONDUCT.md).
 
