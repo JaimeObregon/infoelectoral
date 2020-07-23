@@ -481,6 +481,8 @@ $formats = [
 			'start' => 25,
 			'length' => 1,
 			'formatter' => function($code) {
+				// Aunque la especificación contempla el caso de suplentes, lo cierto es que
+				// a fecha de julio de 2020 ningún fichero contiene uno.
 				return [
 					'T' => 'Titular',
 					'S' => 'Suplente',

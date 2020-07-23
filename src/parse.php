@@ -21,8 +21,7 @@
  * @license       https://www.gnu.org/licenses/agpl-3.0.en.html
  */
 
-require 'includes/constants.php';
-require 'includes/formats.php';
+require 'includes/functions.php';
 
 /**
  * Script invocable desde la línea de comandos que decodifica un fichero `.DAT` dado.
@@ -35,67 +34,24 @@ if (count($argv) != 2) {
     printf("Uso: %s [FICHERO.DAT]\n", $argv[0]);
     die;
 }
-
 $filename = $argv[1];
 
-/**
- * La especificación define literalmente así la nomenclatura de los ficheros .DAT:
- * `nnxxaamm.dat`
- * - `nn`: Código identificativo del tipo de fichero
- * - `xx`: Tipo de proceso electoral
- * - `aa`: Dos últimas cifras del año de celebración del proceso electoral
- * - `mm`: Dos dígitos correspondientes al mes de celebración del proceso electoral
- * - `dat`: Es siempre la extensión de los ficheros
- */
-preg_match('#(\d{2})(\d{2})(\d{2})(\d{2})\.DAT#i', $filename, $matches);
-list(, $nn, $xx, $aa, $mm) = $matches;
-$year = ($aa > 70 ? '19' : '20') . $aa;
-
-$file = [
-	'Fichero' => $filename,
-	'Tipo de fichero' => FICHEROS[$nn],
-	'Tipo de proceso electoral' => PROCESOS[$xx],
-	'Año del proceso electoral' => $year,
-	'Mes del proceso electoral' => (int) $mm,
-];
-print_r($file);
+// Interpreta el nombre del fichero únicamente
+$file = parseName($filename);
 
 /**
- * Para la decodificación de los municipios la especificación remite al INE.
+ * Para la decodificación de los municipios la especificación oficial remite al INE.
  * Pero los códigos cambian a comienzos de cada año, por lo que se hace preciso cargar
  * la del año correspondiente.
+ *
+ * Y además es preciso añadir a la correspondencia los códigos que el Ministerio ha utilizado
+ * históricamente pero que el INE actualmente no reconoce.
  */
-require sprintf('includes/municipios/%s.php', $year >= 2001 ? $year : '2001');
+require sprintf('includes/municipios/%s.php', $file['Año'] >= 2001 ? $file['Año'] : '2001');
 const MUNICIPIOS = MUNICIPIOS_INE + MUNICIPIOS_INEXISTENTES;
 
-$lines = file($filename);
-foreach ($lines as $line) {
-	// Ficheros como `municipales/04201505_TOTA/04041505.DAT` tienen corrompido
-	// un particular registro. Pero es posible subsanar el error y aquí lo hacemos.
-	// Saludos a Linda M. Peeters, cuya candidatura en 2015 corrompió los ficheros oficiales...
-	if ($nn === '04' && preg_match('/^042015051439153090873009TLinda/', $line)) {
-		$line = str_replace('7000000001', 'F00000000 ', $line);
-	}
+// Interpreta el contenido del fichero
+$results = parseFile($file['Código'], $filename);
 
-	// Ficheros como `municipales/04197904_MUNI/11047904.DAT` tienen algunas líneas corrompidas.
-	// Aquí descartamos dichas líneas.
-	if ($nn === '11' && preg_match('/[SN]$/', $line) === 0) {
-		continue;
-	}
-
-	// Ficheros como `municipales/04198305_MUNI/12048305.DAT` tienen también corrompidas algunas
-	// líneas. Lo subsanamos aquí.
-	if ($nn === '12' && preg_match('/ {30}\d{3}[SN] {50}$/', $line)) {
-		$line = substr_replace(trim($line), str_pad('', 50, ' '), 69, 0);
-	}
-
-	$results = [];
-	foreach ($formats[$nn] as $name => $field) {
-		$value = substr($line, $field['start'] - 1, $field['length']);
-		$result = $field['formatter']($value, $line);
-		if (!is_null($result)) {
-			$results[$name] = $result;
-		}
-	}
-	print_r($results);
-}
+print_r($file);
+print_r($results);
