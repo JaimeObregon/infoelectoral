@@ -1,7 +1,6 @@
 # infoelectoral
 
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
-[![HitCount](http://hits.dwyl.com/JaimeObregon/infoelectoral.svg)](http://hits.dwyl.com/JaimeObregon/infoelectoral)
 <span class="badge-patreon"><a href="https://patreon.com/jaime_gomez_obregon" title="Apoya este proyecto en Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Botón para donar en Patreon" /></a></span>
 
 Intérprete de microdatos electorales del Ministerio del Interior español.
