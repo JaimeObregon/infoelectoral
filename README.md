@@ -114,7 +114,7 @@ Sin perjuicio de lo especificado en el texto de la licencia, puedes modificar, d
 
 ## Licencia de los datos
 
-El origen de los datos aquí reutilizados es el Ministerio del Interior del Gobierno de España. La carga inicial de datos se ha realizado en junio de 2020, si bien pretendo mantener este repositorio actualizado con los datos que sean publicados posteriormente.
+El origen de los datos aquí reutilizados es el Ministerio del Interior del Gobierno de España. La carga inicial de datos se realizó en junio de 2020 y la he actualizado con el volcado de datos electorales de 2019 que el Ministerio realizó en julio. Mi idea es mantener este repositorio actualizado con los datos que sean publicados posteriormente.
 
 El Ministerio del Interior no participa, patrocina ni necesariamente apoya la reutilización de datos que aquí realizo ni los objetivos que con ella persigo.
 
