@@ -76,7 +76,7 @@ foreach ($results as &$result) {
 	 * `Segundo apellido`), en la práctica sucede que este criterio solo se aplica en ciertos
 	 * procesos a partir de un determinado año. Y en los años previos los registros no separan el
 	 * nombre y cada uno de los apellidos, sino que consignan todo concatenado en el primero de los
-	 * campos (`Nombre`), desbordando el exceso sucesivamente a los otros dos campos siguientes.
+	 * campos (`Nombre`), desbordando sucesivamente el exceso a los otros dos campos siguientes.
 	 */
 	// En las elecciones a Congreso, Senado, Cabildos y Parlamento Europeo, el cambio de formato se
 	// da en el año 2003. En las municipales, en 2011.
@@ -100,7 +100,7 @@ foreach ($results as &$result) {
 		}
 	}
 
-	// Hagamos un mínimo embellecimiento de la capitaliación...
+	// Hagamos un mínimo embellecimiento de la capitalización...
 	$nombre = mb_convert_case($nombre, MB_CASE_TITLE);
 	$map = [
 		'/ De La /' => ' de la ',
