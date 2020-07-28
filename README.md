@@ -13,7 +13,7 @@ El Ministerio del Interior español está a cargo de los procesos electorales de
 
 Estas listas reflejan **la composición de las candidaturas electorales a todos los comicios** europeos, estatales (Congreso y Senado) y municipales, incluyendo los cabildos canarios. También aparecen datos complementarios detallados de los cuatro referéndums celebrados desde 1976. Se trata, en definitiva, de un conjunto de datos de un elevado valor investigativo e histórico que comprende miles de agrupaciones electorales y el nombre de cientos de miles de candidatos.
 
-> :warning: Nótese que el Ministerio **no publica datos de las elecciones autonómicas**.
+> :warning: El Ministerio **no publica datos de las elecciones autonómicas**, [pero **hay una tediosa solución**](#las-elecciones-autonómicas).
 
 **La información publicada por el Ministerio no puede ser consumida directamente**: es preciso interpretarla con un software desarrollado *ad hoc* y que implemente la especificación técnica de los particulares formatos informáticos en que las autoridades electorales españolas codifican la información.
 
@@ -59,6 +59,24 @@ En [el directorio `/files`](/files) de este repositorio he posprocesado cada fic
 1. Cada fichero se ha descomprimido, preservando su nombre de fichero, en el subdirectorio correspondiente al tipo de proceso electoral al que pertenece. Por ejemplo, `04199105_TOTA.zip` se ha descomprimido en `municipales/04199105_TOTA`.
 
 2. Los ficheros `FICHEROS.DOC` y `FICHEROS.rtf` que el Ministerio incluye en cada uno de los ficheros `.zip` han sido eliminados de cada subdirectorio descomprimido tras comprobar que son exactamente los mismos ficheros en todos y cada uno de los ficheros `.zip`. Como además `FICHEROS.DOC` y `FICHEROS.rtf` son exactamente el mismo documento en dos formatos diferentes, he eliminado el segundo y dejado una única copia del primero que puede encontrarse en [`/files`](/files).
+
+# Las elecciones autonómicas
+
+Los ficheros oficiales aquí trabajados omiten las elecciones autonómicas. He escrito al Ministerio para solicitar estos registros, pero lógicamente *no ha colado*. He aquí su respuesta:
+
+> Los resultados de las elecciones de ámbito autonómico, así como su convocatoria, son competencia de cada una de las Comunidades Autónomas, a las que deberá dirigirse para obtener la información solicitada.
+>
+> [En este enlace tiene la dirección de las distintas Comunidades Autónomas](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm#.Xx_aF9Kqljo).
+>
+> — Ministerio del Interior
+
+Por lo tanto, la única manera de incorporar a este repositorio los datos —como mínimo de candidaturas y candidatos e idealmente todo lo demás, desde tan atrás como sea posible— de las elecciones autonómicas, es:
+
+1. Localizarlos **en el portal oficial de cada gobierno autonómico** e importarlos manualmente en este repositorio;
+2. **Programar un "conector" independiente por cada Comunidad Autónoma**, que transforme el formato de cada fichero a una estructura de datos lo más compatible posible con la resultante de la salida de este software; y
+3. Mantener en el tiempo esta sincronización entre los datos autonómicos y los del Ministerio.
+
+La alternativa a este esfuerzo es, por supuesto, simplemente prescindir de los datos de las elecciones autonómicas.
 
 # Requisitos
 
