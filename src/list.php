@@ -123,7 +123,7 @@ foreach ($results as &$result) {
 	// "Romana, la" en vez de "La Romana"
 	$municipio = $result['Municipio'];
 	if (preg_match("/(.{2,})((\,\s{0,1})([A-Za-z]{1,3}))$/", $result['Municipio'])) { // Comprueba si hay una serie de caracteres, una coma y luego otra sucesión de entre 1 y 3 caracteres
-		$municipio = trim(preg_replace("/(.{2,})((\,\s{0,1})([A-Za-z]{1,3}))$/", '${4} ${1}', $result['Municipio']));
+		$municipio = trim(preg_replace("/(.{2,})((\,\s{0,1})([A-Za-z]{1,5}))$/", '${4} ${1}', $result['Municipio']));
 	}
 
 	// ... y ajustar la capitalización y los espacios al principio y al final
