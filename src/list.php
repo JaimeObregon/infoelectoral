@@ -48,7 +48,7 @@ $file = parseName($argv[1]);
  * Para la decodificación de los municipios la especificación oficial remite al INE.
  * Pero los códigos cambian a comienzos de cada año, por lo que se hace preciso cargar
  * la del año correspondiente.
- * 
+ *
  * Y además es precesio añadir a la correspondencia los códigos que el Ministerio ha utilizado
  * históricamente pero que el INE actualmente no reconoce.
  */
@@ -119,13 +119,20 @@ foreach ($results as &$result) {
 
 	$candidatura = $result['Candidatura'];
 
+	// Modificar los municipios que llevan el artículo al final
+	// "Romana, la" en vez de "La Romana"
+	$municipio = $result['Municipio'];
+	if (preg_match("/(.{2,})((\,\s{0,1})([A-Za-z]{1,5}))$/", $result['Municipio'])) {
+		$municipio = preg_replace("/(.{2,})((\,\s{0,1})([A-Za-z]{1,5}))$/", '${4} ${1}', $result['Municipio']);
+	}
+
 	$candidato = [
 		'Número de orden' => $result['Número de orden del candidato'],
 		'Elegido' => $result['Elegido'],
 		'Sexo' => $result['Sexo'] ?? null,
 		'Candidato' => $nombre,
 		'Provincia' => $result['Provincia'],
-		'Municipio' => $result['Municipio'],
+		'Municipio' => $municipio,
 		'Siglas' => $candidaturas[$candidatura]['Siglas'] ?? null,
 		'Candidatura' => $candidaturas[$candidatura]['Candidatura'] ?? null,
 	];
