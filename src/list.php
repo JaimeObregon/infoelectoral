@@ -100,34 +100,11 @@ foreach ($results as &$result) {
 		}
 	}
 
-	// Hagamos un mínimo embellecimiento de la capitalización...
-	$nombre = mb_convert_case($nombre, MB_CASE_TITLE);
-	$map = [
-		'/ De La /' => ' de la ',
-		'/ Del /' => ' del ',
-		'/ De /' => ' de ',
-		'/ Y /' => ' y ',
-		'/ I /' => ' i ',
-		'/ E /' => ' e ',
-	];
-	$nombre = preg_replace(array_keys($map), array_values($map), $nombre);
+	$nombre = prettifyName($nombre);
 
-	// ...y erradiquemos también los sufijos que entre paréntesis constan a veces. Ejemplos:
-	// - `Ramon Marrero Garcia (Independiente)`
-	// - `Celestino Gonzalez Bolaños (PCE L-M)`
-	$nombre = trim(preg_replace('/\(.+\)\s*$/', '', $nombre));
+	$municipio = prettifyMunicipality($result['Municipio']);
 
 	$candidatura = $result['Candidatura'];
-
-	// Modificar los municipios que llevan el artículo al final
-	// "Romana, la" en vez de "La Romana"
-	$municipio = $result['Municipio'];
-	if (preg_match("/(.{2,})((\,\s{0,1})([A-Za-z]{1,3}))$/", $result['Municipio'])) { // Comprueba si hay una serie de caracteres, una coma y luego otra sucesión de entre 1 y 3 caracteres
-		$municipio = trim(preg_replace("/(.{2,})((\,\s{0,1})([A-Za-z]{1,5}))$/", '${4} ${1}', $result['Municipio']));
-	}
-
-	// ... y ajustar la capitalización y los espacios al principio y al final
-	$municipio = mb_convert_case(trim($municipio), MB_CASE_TITLE);
 
 	$candidato = [
 		'Número de orden' => $result['Número de orden del candidato'],
