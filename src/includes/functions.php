@@ -114,3 +114,69 @@ function parseFile($format, $filename) {
 
 	return $results;
 }
+
+/**
+ * Hace un embellecimiento del nombre completo de un candidato.
+ *
+ * @param  [string] $name Nombre completo del candidato
+ * @return [string]       Nombre completo embellecido
+ */
+function prettifyName($name) {
+	$map = [
+		'/ De La /' => ' de la ',
+		'/ Del /' => ' del ',
+		'/ De /' => ' de ',
+		'/ Y /' => ' y ',
+		'/ I /' => ' i ',
+		'/ E /' => ' e ',
+	];
+
+	// Hagamos un mínimo embellecimiento de la capitalización...
+	$name = mb_convert_case($name, MB_CASE_TITLE);
+	$name = preg_replace(array_keys($map), array_values($map), $name);
+
+	// ...y erradiquemos también los sufijos que entre paréntesis constan a veces. Ejemplos:
+	// - `Ramon Marrero Garcia (Independiente)`
+	// - `Celestino Gonzalez Bolaños (PCE L-M)`
+	$name = trim(preg_replace('/\(.+\)\s*$/', '', $name));
+
+	return $name;
+}
+
+/**
+ * Embellece el nombre de un municipios.
+ *
+ * Véase https://github.com/JaimeObregon/infoelectoral/issues/1
+ *
+ * @param  [string] $name Nombre del municipio
+ * @return [string]       Nombre del municipio embellecido
+ */
+function prettifyMunicipality($name) {
+	// Reemplazamos dobles espacios. Ejemplos:
+	// - `Saus,  Camallera i Llampaies` → `Saus, Camallera i Llampaies`
+	// - `Cruïlles,  Monells i Sant Sadurní de l'Heura` → `Cruïlles, Monells i Sant Sadurní de l'Heura`
+	$name = trim(preg_replace('/ {2,}/', ' ', $name));
+
+	// En el caso de municipios con dos nombres, cada uno ha de embellecerse por separado.
+	// Por ejemplo:
+	// - `Pinós, el/Pinoso` ha de ser `El Pinós/Pinoso`
+	// - `Lorcha/Orxa, l'` ha de ser `Lorcha/l'Orxa`, y no `l'Lorcha/Orxa`
+	$names = explode('/', $name);
+	foreach ($names as &$name) {
+		// He revisado automáticamente todas las tablas de decodificación de municipios del INE,
+		// así como también `MUNICIPIOS_INEXISTENTES`, y he obtenido así todos los posibles sufijos
+		// que pueden aparecer, tras una coma, en el nombre de un municipio. Son estos:
+		$sufijos = "#^(.+), (A|As|El|Els|Es|L'|La|Las|Les|Los|O|Os|Sa|Ses|el|els|l'|la|les)$#";
+		$name = preg_replace($sufijos, '${2} ${1}', $name);
+
+		// Pero lo correcto es `L'Albi` y no `L' Albi`
+		$name = preg_replace("/^[Ll]' /", "L'", $name);
+
+		// Y `l'Alfàs del Pi` ha de ser `L'Alfàs del Pi`
+		$name = ucfirst($name);
+	}
+
+	$name = implode('/', $names);
+
+	return $name;
+}

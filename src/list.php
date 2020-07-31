@@ -48,7 +48,7 @@ $file = parseName($argv[1]);
  * Para la decodificación de los municipios la especificación oficial remite al INE.
  * Pero los códigos cambian a comienzos de cada año, por lo que se hace preciso cargar
  * la del año correspondiente.
- * 
+ *
  * Y además es precesio añadir a la correspondencia los códigos que el Ministerio ha utilizado
  * históricamente pero que el INE actualmente no reconoce.
  */
@@ -100,22 +100,9 @@ foreach ($results as &$result) {
 		}
 	}
 
-	// Hagamos un mínimo embellecimiento de la capitalización...
-	$nombre = mb_convert_case($nombre, MB_CASE_TITLE);
-	$map = [
-		'/ De La /' => ' de la ',
-		'/ Del /' => ' del ',
-		'/ De /' => ' de ',
-		'/ Y /' => ' y ',
-		'/ I /' => ' i ',
-		'/ E /' => ' e ',
-	];
-	$nombre = preg_replace(array_keys($map), array_values($map), $nombre);
+	$nombre = prettifyName($nombre);
 
-	// ...y erradiquemos también los sufijos que entre paréntesis constan a veces. Ejemplos:
-	// - `Ramon Marrero Garcia (Independiente)`
-	// - `Celestino Gonzalez Bolaños (PCE L-M)`
-	$nombre = trim(preg_replace('/\(.+\)\s*$/', '', $nombre));
+	$municipio = prettifyMunicipality($result['Municipio']);
 
 	$candidatura = $result['Candidatura'];
 
@@ -125,7 +112,7 @@ foreach ($results as &$result) {
 		'Sexo' => $result['Sexo'] ?? null,
 		'Candidato' => $nombre,
 		'Provincia' => $result['Provincia'],
-		'Municipio' => $result['Municipio'],
+		'Municipio' => $municipio,
 		'Siglas' => $candidaturas[$candidatura]['Siglas'] ?? null,
 		'Candidatura' => $candidaturas[$candidatura]['Candidatura'] ?? null,
 	];
