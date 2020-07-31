@@ -70,13 +70,7 @@ Los ficheros oficiales aquí trabajados omiten las elecciones autonómicas. He e
 >
 > — Ministerio del Interior
 
-Por lo tanto, la única manera de incorporar a este repositorio los datos —como mínimo de candidaturas y candidatos e idealmente todo lo demás, desde tan atrás como sea posible— de las elecciones autonómicas, es:
-
-1. Localizarlos **en el portal oficial de cada gobierno autonómico** e importarlos manualmente en este repositorio;
-2. **Programar un "conector" independiente por cada Comunidad Autónoma**, que transforme el formato de cada fichero a una estructura de datos lo más compatible posible con la resultante de la salida de este software; y
-3. Mantener en el tiempo esta sincronización entre los datos autonómicos y los del Ministerio.
-
-Hay un debate sobre esto en [*#2: ¿Tiene sentido incorporar las elecciones autonómicas?*](https://github.com/JaimeObregon/infoelectoral/issues/2). La alternativa a este esfuerzo es, por supuesto, simplemente prescindir de los datos de las elecciones autonómicas.
+Hay un debate sobre cómo circunvalar este obstáculo en [*#2: ¿Tiene sentido incorporar las elecciones autonómicas?*](https://github.com/JaimeObregon/infoelectoral/issues/2). La alternativa a este esfuerzo es, por supuesto, simplemente prescindir de los datos de las elecciones autonómicas.
 
 # Requisitos
 
