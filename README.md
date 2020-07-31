@@ -76,7 +76,7 @@ Por lo tanto, la única manera de incorporar a este repositorio los datos —com
 2. **Programar un "conector" independiente por cada Comunidad Autónoma**, que transforme el formato de cada fichero a una estructura de datos lo más compatible posible con la resultante de la salida de este software; y
 3. Mantener en el tiempo esta sincronización entre los datos autonómicos y los del Ministerio.
 
-La alternativa a este esfuerzo es, por supuesto, simplemente prescindir de los datos de las elecciones autonómicas.
+Hay un debate sobre esto en [*#2: ¿Tiene sentido incorporar las elecciones autonómicas?*](https://github.com/JaimeObregon/infoelectoral/issues/2). La alternativa a este esfuerzo es, por supuesto, simplemente prescindir de los datos de las elecciones autonómicas.
 
 # Requisitos
 
