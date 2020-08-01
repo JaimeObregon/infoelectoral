@@ -102,16 +102,20 @@ foreach ($results as &$result) {
 
 	$nombre = prettifyName($nombre);
 
-	$municipio = prettifyMunicipality($result['Municipio']);
+	$municipio = empty($result['Municipio']) ? null : prettifyMunicipality($result['Municipio']);
 
 	$candidatura = $result['Candidatura'];
 
 	$candidato = [
+		'Proceso' => PROCESOS[$file['Proceso']],
+		'Tipo' => $file['Tipo'],
+		'Año' => $file['Año'],
+		'Mes' => $file['Mes'],
 		'Número de orden' => $result['Número de orden del candidato'],
 		'Elegido' => $result['Elegido'],
 		'Sexo' => $result['Sexo'] ?? null,
 		'Candidato' => $nombre,
-		'Provincia' => $result['Provincia'],
+		'Provincia' => $result['Provincia'] ?? null,
 		'Municipio' => $municipio,
 		'Siglas' => $candidaturas[$candidatura]['Siglas'] ?? null,
 		'Candidatura' => $candidaturas[$candidatura]['Candidatura'] ?? null,
