@@ -24,7 +24,10 @@
 require 'includes/functions.php';
 
 /**
- * Script invocable desde la línea de comandos que decodifica un fichero `.DAT` dado.
+ * Script invocable desde la línea de comandos que decodifica un fichero `.DAT` dado
+ * y devuelve su contenido por `stdout` en un formato legible por humanos.
+ *
+ * Consulta `lists.php` para obtener las listas electorales en formato CSV (reutilizable).
  */
 
 // Algunos ficheros particularmente grandes requieren más memoria de la predeterminada
@@ -53,5 +56,6 @@ const MUNICIPIOS = MUNICIPIOS_INE + MUNICIPIOS_INEXISTENTES;
 // Interpreta el contenido del fichero
 $results = parseFile($file['Código'], $filename);
 
+// Devuelve el fichero decodificado en un formato legible por humanos.
 print_r($file);
 print_r($results);

@@ -84,12 +84,12 @@ Desde línea de comandos, lanza [`parse.php`](src/parse.php) con el fichero `.DA
 $ php src/parse.php files/congreso/02201904_MESA/04021904.DAT
 ```
 
-Ello devolverá por `stdout` la estructura de datos del fichero decodificada, en un formato legible por humanos.
+Ello devolverá por `stdout` la estructura de datos del fichero decodificada en un formato legible por humanos, pues el objetivo de `parse.php` es meramente explorar manualmente los ficheros.
 
-Para exportar las listas electorales de un proceso electoral en formato CSV por `stdout`, invoca [`list.php`](src/list.php) con dos argumentos: el fichero con las candidaturas (`03*.DAT`) y el que contiene los candidatos (`04*.DAT`). Por ejemplo:
+Para exportar las listas electorales de un proceso electoral en formato CSV (reutilizable) por `stdout`, invoca [`lists.php`](src/lists.php) con dos argumentos: el fichero con las candidaturas (`03*.DAT`) y el que contiene los candidatos (`04*.DAT`). Por ejemplo:
 
 ```console
-$ php src/list.php files/municipales/04201905_MUNI/03041905.DAT files/municipales/04201905_MUNI/04041905.DAT
+$ php src/lists.php files/municipales/04201905_MUNI/03041905.DAT files/municipales/04201905_MUNI/04041905.DAT
 ```
 
 Ni que decir tiene que ambos ficheros han de pertenecer al mismo proceso electoral.

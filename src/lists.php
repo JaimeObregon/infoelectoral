@@ -29,6 +29,8 @@ require 'includes/functions.php';
  * electorales de dicho proceso electoral.
  *
  * Ni que decir tiene que los dos ficheros dados han de pertenecer al mismo proceso electoral.
+ *
+ * Consulta `parse.php` para explorar el contenido de cualquier fichero `.DAT`.
  */
 
 // Algunos ficheros particularmente grandes requieren más memoria de la predeterminada
