@@ -123,6 +123,7 @@ function parseFile($format, $filename) {
  */
 function prettifyName($name) {
 	$map = [
+		'/ De Los /' => ' de los ',
 		'/ De La /' => ' de la ',
 		'/ Del /' => ' del ',
 		'/ De /' => ' de ',
