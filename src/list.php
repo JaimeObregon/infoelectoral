@@ -100,12 +100,12 @@ foreach ($results as &$result) {
 		}
 	}
 
-	$nombre = prettifyName($nombre);
-
-	$municipio = empty($result['Municipio']) ? null : prettifyMunicipality($result['Municipio']);
-
 	$candidatura = $result['Candidatura'];
 
+	/**
+	 * Esta es la estructura de datos exportada.
+	 * Los valores inexistentes son devueltos con `null`
+	 */
 	$candidato = [
 		'Proceso' => PROCESOS[$file['Proceso']],
 		'Tipo' => $file['Tipo'],
@@ -114,9 +114,23 @@ foreach ($results as &$result) {
 		'Número de orden' => $result['Número de orden del candidato'],
 		'Elegido' => $result['Elegido'],
 		'Sexo' => $result['Sexo'] ?? null,
-		'Candidato' => $nombre,
+
+		/**
+		 * Los registros oficiales omiten el nombre de algunos candidatos.
+		 * Por ejemplo, en `cabildos/06199105_TOTA/04069105.DAT:881`.
+		 *
+		 * Supongo que porque la AEPD o un tribunal han obligado al Ministerio,
+		 * en virtud del "derecho al olvido" recogido en el RGPD, a omitir a algunas personas
+		 * que no desean seguir apareciendo en las listas.
+		 *
+		 * En el caso de recibir un nombre vacío, `prettifyName()` devuelve ya `null`.
+		 *
+		 * Véase https://www.eldiario.es/tecnologia/diario-turing/datos_1_4270624.html
+		 */
+		'Candidato' => prettifyName($nombre),
+
 		'Provincia' => $result['Provincia'] ?? null,
-		'Municipio' => $municipio,
+		'Municipio' => empty($result['Municipio']) ? null : prettifyMunicipality($result['Municipio']),
 		'Siglas' => $candidaturas[$candidatura]['Siglas'] ?? null,
 		'Candidatura' => $candidaturas[$candidatura]['Candidatura'] ?? null,
 	];

@@ -119,7 +119,7 @@ function parseFile($format, $filename) {
  * Hace un embellecimiento del nombre completo de un candidato.
  *
  * @param  [string] $name Nombre completo del candidato
- * @return [string]       Nombre completo embellecido
+ * @return [string]       Nombre completo embellecido, o `null` si el nombre pasado está vacío
  */
 function prettifyName($name) {
 	$map = [
@@ -141,7 +141,7 @@ function prettifyName($name) {
 	// - `Celestino Gonzalez Bolaños (PCE L-M)`
 	$name = trim(preg_replace('/\(.+\)\s*$/', '', $name));
 
-	return $name;
+	return empty($name) ? null : $name;
 }
 
 /**
