@@ -1,6 +1,6 @@
 # Cómo contactar y participar en este proyecto
 
-Ten en cuenta que este repositorio es un subproducto colateral de un proyecto más ambicioso que está en ciernes: la Chanchullopedia™. No obstante, y como en cualquier proyecto de software libre, son muy bienvenidas las contribuciones:
+Este repositorio es un subproducto colateral de un proyecto más ambicioso que busca [cruzar las adjudicaciones de contratos del sector público español con las listas electorales](https://twitter.com/JaimeObregon/status/1273814894840856576) para aflorar y exponer chanchullos: [**la Chanchullopedia™**](https://twitter.com/JaimeObregon/status/1274331563254259713). No obstante, y como en cualquier proyecto de software libre, son muy bienvenidas las contribuciones:
 
 - Si detectas algún defecto o tienes alguna duda, comentario o petición, **puedes [abrir un issue aquí en Github](https://github.com/jaimeobregon/infoelectoral/issues)**.
 
