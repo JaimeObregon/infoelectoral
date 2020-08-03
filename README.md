@@ -37,6 +37,8 @@ A fecha de creación de este proyecto (julio de 2020), [la fuente oficial](https
 | ------------------------------------ | --------------------- |
 | ![Captura de pantalla de la sección de descarga de datos del portal oficial en julio de 2020](/assets/portal-oficial.png) | ![Captura de pantalla de la sección de metodología y fuentes en julio de 2020](/assets/metodologia-y-fuentes.png) |
 
+Las tablas de decodificación de municipios y provincias proceden, con fecha de julio de 2020, del **Instituto Nacional de Estadística (INE)**. Sobre estas tablas he realizado, sin desnaturalizarlas, [un embellecimiento de los nombres](https://github.com/JaimeObregon/infoelectoral/issues/1).
+
 ## Descarga inicial de los datos oficiales
 
 La descarga inicial manual de todos los ficheros es tediosa porque se hace preciso cumplimentar iterativamente los desplegables `Elección` (proceso electoral) y `Fecha` (convocatoria) así como descargar y descomprimir uno a uno sucesivamente cada uno de los 161 ficheros históricos existentes ahora mismo.
@@ -138,7 +140,7 @@ Sin perjuicio de lo especificado en el texto de la licencia, puedes modificar, d
 
 El origen de los datos aquí reutilizados es el Ministerio del Interior del Gobierno de España. La carga inicial de datos se realizó en junio de 2020 y la he actualizado con el volcado de datos electorales de 2019 que el Ministerio realizó en julio. Mi idea es mantener este repositorio actualizado con los datos que sean publicados posteriormente.
 
-El Ministerio del Interior no participa, patrocina ni necesariamente apoya la reutilización de datos que aquí realizo ni los objetivos que con ella persigo.
+Ni el Ministerio del Interior ni el Instituto Nacional de Estadística participan, patrocinan ni necesariamente apoyan la reutilización de datos que aquí realizo ni los objetivos que con ella persigo.
 
 ## Apéndice conforme la licencia GNU AGPL
 
