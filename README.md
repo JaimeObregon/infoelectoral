@@ -147,8 +147,7 @@ Ni el Ministerio del Interior ni el Instituto Nacional de Estadística participa
 `infoelectoral`, intérprete de microdatos electorales del Ministerio del Interior español\
 Copyright (C) 2020 Jaime Gómez-Obregón
 
-Este repositorio es software libre: puedes redistribuirlo y/o modificarlo bajo los términos
-de la GNU Affero General Public License versión 3 y posteriores, publicada por la Free Software Foundation.
+Este repositorio es software libre: puedes redistribuirlo y/o modificarlo bajo los términos de la GNU Affero General Public License versión 3 y posteriores, publicada por la Free Software Foundation.
 
 Este programa se distribuye con la esperanza de ser útil, pero **sin garantía alguna**; incluso sin la garantía implícita de que pueda ser **comercializable** o **válido para un propósito concreto**. Para más detalles lee la [licencia GNU Affero General Public License](/LICENSE).
 
