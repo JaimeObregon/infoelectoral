@@ -1,7 +1,6 @@
 # Código de conducta
 
 > Camina plácido entre el ruido y la prisa,\
-> \
 > y recuerda la paz que se puede encontrar en el silencio.\
 > En cuanto te sea posible y sin rendirte,\
 > mantén buenas relaciones con todas las personas.\
